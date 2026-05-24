@@ -1,0 +1,658 @@
+{% load static %}
+{% load translation_tags %}
+<!DOCTYPE html>
+<html lang="en">
+
+	<head>
+		<!-- Meta -->
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+		<meta name="description" content="Monoline - Design Agency HTML Template">
+		<meta name="keywords" content="agency, business, corporate, creative, html5, modern, multipurpose, One Page, parallax, startup ">		
+		<!-- SITE TITLE -->
+		<title>{% t "site.title" %}</title>			
+
+		<link rel="icon" type="image/png" href="{% static 'assets/img/icon/site_icon.png' %}">
+		<!-- Latest Bootstrap min CSS -->
+		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">	
+		<!-- Google Font -->
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800"> 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600">			
+		<!-- Font Awesome CSS -->
+		<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/fonts/themify-icons.css' %}">
+		<!--- owl carousel Css-->
+		<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.carousel.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.css' %}">
+		<!--materialdesignicons Css-->
+        <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">
+		<!-- animate CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">			
+		<!-- MAGNIFIC CSS -->
+		<link rel="stylesheet" href="{% static 'assets/css/magnific-popup.css' %}">				
+		<!-- Style CSS -->						
+		<link rel="stylesheet" href="{% static 'assets/css/menu.css' %}">		
+		<link rel="stylesheet" href="{% static 'assets/css/style.css' %}">		
+		<link rel="stylesheet" href="{% static 'assets/css/responsive.css' %}">		
+
+	</head>
+	
+    <body data-spy="scroll" data-offset="80">
+
+		<!-- START PRELOADER -->
+		<div class="preloader">
+			<div class="spinner">
+				<div class="double-bounce1"></div>
+				<div class="double-bounce2"></div>
+			</div>
+		</div>
+		<!-- END PRELOADER -->		
+
+		 <!-- START NAVBAR -->
+		<div class="site-mobile-menu site-navbar-target">
+		  <div class="site-mobile-menu-header">
+			<div class="site-mobile-menu-close mt-3">
+			  <span class="icon-close2 js-menu-toggle"></span>
+			</div>
+		  </div>
+		  <div class="site-mobile-menu-body"></div>
+		</div>
+	   
+		<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
+		  <div class="container">
+			<div class="row align-items-center">       
+			  <div class="col-6 col-xl-2">
+				<h1 class="mb-0 site-logo">
+					<a href="{% url 'home_lang' request.CURRENT_LANG %}" class="d-flex align-items-center  text-decoration-none">
+						<img 
+							src="{% static 'assets/img/icon/nav_icon.png' %}" 
+							alt=""
+							style="height:55px;width:auto;"
+						>
+						<span 
+							class="text-white text-nowrap"
+							style="
+								font-family:'Orbitron',sans-serif;
+								font-size:clamp(14px,1.4vw,22px);
+								letter-spacing:1px;
+								font-weight:500;
+							"
+						>
+							{% t "site.title" %}
+						</span>
+					</a>
+				</h1>
+			  </div>
+			  <div class="col-12 col-md-10 d-none d-xl-block">
+				<nav class="site-navigation position-relative text-right" role="navigation">
+				  <ul class="site-menu main-menu js-clone-nav mr-auto d-none d-lg-block">
+				  	<li class="has-children">
+					  <a class="nav-link text-uppercase" href="javascript:void(0)">{% t "nav-menu.about" %}</a>
+					  <ul class="dropdown">
+						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.general_information" %}</a></li>
+						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.management" %}</a></li>
+						{% comment %} <li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.history" %}</a></li> {% endcomment %}
+						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.organizational_structure" %}</a></li>
+						
+						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.supervisory_board" %}</a></li>
+						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.vacancies" %}</a></li>
+					  </ul>
+					</li>	
+					<li class="has-children">
+						<a href="javascript:void(0)" class="nav-link text-uppercase">
+							{% t "nav-menu.shareholders_investors" %}
+						</a>
+						<ul class="dropdown">
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.shareholders_meeting" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.development_strategy" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.internal_documents" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.business_plan" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.dividends" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.reports" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.charter" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.emission_prospectus" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.audit_report" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.important_facts" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.comply_explain" %}</a></li>
+							<li><a href="#" class="nav-link">{% t "nav-sub-menu.affiliated_persons" %}</a></li>
+						</ul>
+					</li>				 							
+					<li class="has-children">
+						<a href="javascript:void(0)" class="nav-link text-uppercase">{% t "nav-menu.services" %}</a>
+						<ul class="dropdown">
+							<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.activity" %}</a></li>
+							<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.projects" %}</a></li>
+							<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.tenders_procurements" %}</a></li>
+						</ul>
+					</li>								
+			        <li><a class="nav-link text-uppercase" href="{% url 'contact' request.CURRENT_LANG %}">{% t "nav-menu.contact" %}</a>
+					</li>		
+				  </ul>
+				</nav>
+			  </div>
+			   <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
+			   <a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
+			   </div>
+			</div>
+		  </div>
+		</header>
+	   <!-- END NAVBAR-->				
+	
+
+	   {% block content %}
+
+		<!-- START HOME  data-stellar-background-ratio="0.3"-->
+		<section  id="home" class="home_bg" style="background-image:url('{{ statistics.home_page_bg_icon.url }}'); background-size:cover; background-position:center center;">
+			<div class="container">
+				<div class="row">
+				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+					<div class="hero-text">
+						<h2>{% t "home.hero_title" %}</h2>
+						<p>{% t "home.hero_description" %}</p>
+						<a href="about.html">{% t "home.learn_more" %}</a>
+					</div>
+				  </div><!--- END COL -->				  
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END  HOME -->	
+
+		<!-- FEATURES -->
+		<section class="feature_area">
+			<div class="container">	
+				<div class="row feature_bg">
+					<div class="section-title text-center">		
+						<h2>{% t "home.our_advantages" %}</h2>
+						<p>{% t "home.mission_description" %}</p>
+					</div>					
+					{% for item in advantages %}
+					<div class="col-lg-4 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="single_feature text-start h-100">
+
+							<img 
+								src="{{ item.image.url }}"
+								alt="icon"
+								class="img-fluid mb-4"
+								style="
+									width:120px;
+									height:120px;
+									object-fit:cover;
+									border-radius:18px;
+
+									box-shadow:
+										0 0 35px rgba(255,255,255,.95),
+										0 0 70px rgba(255,255,255,.55);
+
+									filter:brightness(1.02);
+								"
+							>
+
+							<h4 class="mb-3">
+								{{ item.title }}
+							</h4>
+
+							<p>
+								{{ item.description }}
+							</p>
+
+						</div>
+					</div>
+
+					{% endfor %}			
+				</div><!-- END ROW -->				
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END FEATURES -->
+		
+		<!-- START COUNTER -->
+		<section data-stellar-background-ratio="0.3" class="counter_feature section-padding">
+			<div class="container">
+				<div class="row text-center">
+					<div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="single-project">
+							<img 
+								src="{{ statistics.experience_image_icon.url }}" 
+								alt="icon"
+								style="
+									width:100px;
+									height:100px;
+									object-fit:contain;
+								"
+							>
+							<h2 class="counter-num">{{ statistics.years_of_experience }}</h2>
+							<h4>{{ statistics.experience_title }}</h4>
+						</div>							
+					</div>
+					<div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+						<div class="single-project">
+							<img 
+								src="{{ statistics.projects_done_image_icon.url }}"
+								alt="icon"
+								style="
+									width:100px;
+									height:100px;
+									object-fit:contain;
+								"
+							>
+							<h2 class="counter-num">{{ statistics.count_projects_done }}</h2>
+							<h4>{{ statistics.projects_done_title }}</h4>
+						</div>
+					</div><!-- END COL -->
+					<div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+						<div class="single-project">
+							<img 
+								src="{{ statistics.in_process_image_icon.url }}"
+								alt="icon" 
+								style="
+									width:100px;
+									height:100px;
+									object-fit:contain;
+								"
+							/>
+							<h2 class="counter-num">{{ statistics.in_process_count }}</h2>
+							<h4>{{ statistics.in_process_title }}</h4>
+						</div>
+					</div><!-- END COL -->
+					<div class="col-lg-3 col-sm-6 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+						<div class="single-project single-project-mrnone">
+							<img 
+								src="{{ statistics.our_partnership_image_icon.url }}"
+								alt="icon"
+								style="
+									width:100px;
+									height:100px;
+									object-fit:contain;
+								" 
+							/>
+							<h2 class="counter-num">{{ statistics.our_partnership_count }}</h2>
+							<h4>{{ statistics.our_partnership_title }}</h4>
+						</div>					
+					</div><!-- END COL -->
+				</div><!--- END ROW -->
+				<div class="row text-center">						
+					<div class="col-lg-8 offset-lg-2 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+						<div 
+							class="video_btn d-flex align-items-center justify-content-center"
+							style="
+								background-image:url('{{ statistics.company_video_bg_image.url }}');
+								background-size:cover;
+								background-position:center;
+								min-height:500px;
+								border-radius:24px;
+								overflow:hidden;
+							"
+						>
+
+							<a 
+								class="video-play"
+								style="cursor:pointer;"
+								onclick="document.getElementById('companyVideo').showModal()"
+							>
+								<i class="ti-video-clapper"></i>
+							</a>
+
+						</div>
+
+
+						<dialog 
+							id="companyVideo"
+							style="
+								padding:0;
+								border:none;
+								background:none;
+								position:relative;
+								overflow:hidden;
+							"
+						>
+
+							<button 
+								onclick="
+									document.getElementById('companyVideo').close();
+									document.getElementById('videoPlayer').pause();
+								"
+								style="
+									position:absolute;
+									top:12px;
+									right:12px;
+									border:none;
+									background:none;
+									color:#fff;
+									font-size:34px;
+									cursor:pointer;
+									z-index:10;
+									line-height:1;
+								"
+							>
+								×
+							</button>
+
+							<video 
+								id="videoPlayer"
+								controls
+								style="
+									max-width:90vw;
+									max-height:90vh;
+									border-radius:18px;
+									display:block;
+								"
+							>
+								<source src="{{ statistics.company_video.url }}" type="video/mp4">
+							</video>
+
+						</dialog>
+					</div>						
+				</div><!--- END ROW -->				
+			</div><!--- END CONTAINER -->		
+		</section>
+		<!-- END COUNTER-->	
+		
+		<!-- START WHY CHOOSE US -->
+		<section class="why_choose_area section-padding">
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="single_why_choose">
+							<h2>We create <br /> amazing digital <br /> products</h2>
+							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make a type specimen book. It is a long established fact that a reader. It was popularised in the with the release.</p>
+							<a class="btn_one" href="about.html">Learn More</a>
+						</div>							
+					</div><!--- END COL -->	
+					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="single_why_choose_img">
+							<img src="{% static 'assets/img/home-office.png' %}" class="img-fluid" alt="about-image" />
+						</div>							
+					</div><!--- END COL -->	
+				</div><!--- END ROW -->			
+			</div><!--- END CONTAINER -->		
+		</section>
+		<!-- END WHY CHOOSE US-->	
+
+		<!-- START PORTFOLIO -->
+		<section id="portfolio" class="portfolio_area section-padding">
+		   <div class="container-fluid">
+				<div class="section-title text-center">
+					<h2>Latest Works</h2>
+					<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
+				</div>	
+				<div class="col-lg-12 text-center">
+					<div class="portfolio_filter">
+						<ul>
+							<li class="active filter" data-filter="all">All</li>
+							<li class="filter" data-filter=".branding">Branding</li>
+							<li class="filter" data-filter=".webtemplate">Web Template</li>
+							<li class="filter" data-filter=".seo">SEO</li>
+							<li class="filter" data-filter=".digital">Digital Marketing</li>
+						</ul>
+					</div>
+				</div>					
+				<div class="portfolio-grid">									
+					<div class="row">									
+						<div class="col-lg-4 col-sm-6 col-xs-12 portfolio-item mix webtemplate seo">
+							<div class="single-gallery">
+								<img src="{% static 'assets/img/portfolio/1.jpg' %}" class="img-fluid" alt="gallery Image">
+									<a href="{% static 'assets/img/portfolio/1.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
+								<h4><a href="single_project.html">View Project</a></h4>
+							</div>
+						</div><!-- End Col -->
+						<div class="col-lg-4 col-sm-6 col-xs-12 portfolio-item mix branding">
+							<div class="single-gallery">
+								<img src="{% static 'assets/img/portfolio/2.jpg' %}" class="img-fluid" alt="gallery Image">
+								<a href="{% static 'assets/img/portfolio/2.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
+								<h4><a href="single_project.html">View Project</a></h4>
+							</div>
+						</div><!-- End Col -->	
+						<div class="col-lg-4 col-sm-6 col-xs-12 portfolio-item  mix webtemplate digital">
+							<div class="single-gallery">
+								<img src="{% static 'assets/img/portfolio/3.jpg' %}" class="img-fluid" alt="gallery Image">
+									<a href="{% static 'assets/img/portfolio/3.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
+								<h4><a href="single_project.html">View Project</a></h4>
+							</div>
+						</div><!-- End Col -->
+						<div class="col-lg-6 col-sm-6 col-xs-12 portfolio-item  mix digital seo">
+							<div class="single-gallery">
+								<img src="{% static 'assets/img/portfolio/4.jpg' %}" class="img-fluid" alt="gallery Image">
+								<a href="{% static 'assets/img/portfolio/4.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
+								<h4><a href="single_project.html">View Project</a></h4>
+							</div>
+						</div><!-- End Col -->		
+						<div class="col-lg-6 col-sm-6 col-xs-12 portfolio-item mix webtemplate seo">
+							<div class="single-gallery">
+								<img src="{% static 'assets/img/portfolio/5.jpg' %}" class="img-fluid" alt="gallery Image">
+								<a href="{% static 'assets/img/portfolio/5.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
+								<h4><a href="single_project.html">View Project</a></h4>
+							</div>
+						</div><!-- End Col -->									
+					</div><!-- END ROW -->
+					<div class="col-lg-12 text-center">
+						<div class="portfolio_btn">
+							<a class="btn_one" href="portfolio.html">{% t "home.view_more" %}</a>
+						</div>
+					</div><!-- END Col -->
+				</div>
+			</div><!-- END CONTAINER -->
+		</section>
+		<!-- END PORTFOLIO -->		
+
+		<!-- BLOG -->
+		<section class="blog_area section-padding">
+			<div class="container">
+				<div class="section-title text-center">
+					<h2>{% t "home.latest_news" %}</h2>
+					<p>{% t "home.latest_news_description" %}</p>
+				</div>				
+				<div class="row text-center">					
+					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="home_single_blog">
+							<img src="{% static 'assets/img/blog/1.jpg' %}" class="img-fluid" alt="blog-image" />
+							<div class="home_blog_content">
+								<div class="blog_title_info">
+									<h2><a href="blog_single.html">Tiktok Illegally collecting data sharing</a></h2>
+									<span>August 31, 2026</span>
+									<span><a href="blog_single.html">Marketing</a></span>
+								</div>
+								<p>Sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur elit.</p>
+								<a class="home_b_btn" href="blog_single.html">Read More</a>
+							</div>
+						</div>
+					</div><!-- END COL -->				
+					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="home_single_blog">
+							<img src="{% static 'assets/img/blog/2.jpg' %}" class="img-fluid" alt="blog-image" />
+							<div class="home_blog_content">
+								<div class="blog_title_info">
+									<h2><a href="blog_single.html">How can use our latest news by Monoline</a></h2>
+									<span>Sep 01, 2026</span>
+									<span><a href="blog_single.html">Design</a></span>
+								</div>
+								<p>Sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur elit.</p>
+								<a class="home_b_btn" href="blog_single.html">Read More</a>
+							</div>
+						</div>
+					</div><!-- END COL -->				
+					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="home_single_blog">
+							<img src="{% static 'assets/img/blog/3.jpg' %}" class="img-fluid" alt="blog-image" />
+							<div class="home_blog_content">
+								<div class="blog_title_info">
+									<h2><a href="blog_single.html">Learning and growing in the first year</a></h2>
+									<span>Sep 02, 2026</span>
+									<span><a href="blog_single.html">Agency</a></span>
+								</div>
+								<p>Sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur elit.</p>
+								<a class="home_b_btn" href="blog_single.html">{% t "home.read_more" %}</a>
+							</div>
+						</div>
+					</div><!-- END COL -->	
+					<div class="col-lg-12 text-center">
+						<div class="portfolio_btn">
+							<a class="btn_one" href="portfolio.html">
+								{% t "home.view_more" %}
+							</a>
+						</div>
+					</div><!-- END Col -->						
+				</div><!-- END ROW -->				
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END BLOG -->		
+
+		{% endblock %}
+
+		<!-- START PARTNER LOGO -->
+		<div class="partner-logo section-padding">
+			<div class="container">										
+				<div class="row text-center">
+					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
+						<div class="single_logo single_logo_bm">
+							<a href="#"><img src="{% static 'assets/img/partner/1.png' %}" alt="" class="img-fluid"/></a>
+						</div>						
+					</div><!--- END COL -->
+					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+						<div class="single_logo">
+							<a href="#"><img src="{% static 'assets/img/partner/2.png' %}" alt="" class="img-fluid"/></a>
+						</div>						
+					</div><!--- END COL -->
+					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
+						<div class="single_logo single_logo_bm">
+							<a href="#"><img src="{% static 'assets/img/partner/3.png' %}" alt="" class="img-fluid"/></a>
+						</div>						
+					</div><!--- END COL -->
+					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
+						<div class="single_logo">
+							<a href="#"><img src="{% static 'assets/img/partner/4.png' %}" alt="" class="img-fluid"/></a>
+						</div>						
+					</div><!--- END COL -->
+					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
+						<div class="single_logo">
+							<a href="#"><img src="{% static 'assets/img/partner/5.png' %}" alt="" class="img-fluid"/></a>
+						</div>						
+					</div><!--- END COL -->
+					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" data-wow-offset="0">
+						<div class="single_logo">
+							<a href="#"><img src="{% static 'assets/img/partner/6.png' %}" alt="" class="img-fluid"/></a>
+						</div>						
+					</div><!--- END COL -->
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->	
+		</div>
+		<!-- END PARTNER LOGO -->
+		
+		<!-- START FOOTER -->
+		<div class="footer" style="background-image: url('{% static "assets/img/bg/footer.png" %}'); background-size:cover;">
+			<div class="container">		
+				<div class="row footer_bg">						
+					<div class="col-lg-3 col-sm-6 col-xs-12">
+						<div class="footer_logo">
+							<img src="{% static 'assets/img/logo.png' %}" alt="" />
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis dignissim.</p>
+						</div>
+						<div class="social_profile">
+							<ul>
+								<li><a href="#" class="f_facebook"><i class="fa fa-facebook" title="Facebook"></i></a></li>
+								<li><a href="#" class="f_twitter"><i class="fa fa-youtube" title="Twitter"></i></a></li>
+								<li><a href="#" class="f_instagram"><i class="fa fa-instagram" title="Instagram"></i></a></li>
+								<li><a href="#" class="f_linkedin"><i class="fa fa-linkedin" title="LinkedIn"></i></a></li>
+							</ul>
+						</div>							
+					</div><!--- END COL -->						
+					<div class="col-lg-3 col-sm-6 col-xs-12">
+						<div class="single_footer">
+							<h4>Frequently Asked Questions</h4>
+							<ul>
+								<li><a href="#">Privacy & Securty</a></li>
+								<li><a href="#">Terms of Service</a></li>
+								<li><a href="#">Communications</a></li>
+								<li><a href="#">Referral Terms</a></li>
+								<li><a href="#">Disclaimers</a></li>
+							</ul>
+						</div>
+					</div><!--- END COL -->	
+					<div class="col-lg-3 col-sm-6 col-xs-1">
+						<div class="single_footer">
+							<h4>Company</h4>
+							<ul>
+								<li><a href="#">Licenses</a></li>
+								<li><a href="#">market API</a></li>
+								<li><a href="#">Careers and job</a></li>
+								<li><a href="#">Emplois en France</a></li>
+								<li><a href="#">Jobs in Deutschland	</a></li>						
+							</ul>
+						</div>
+					</div><!--- END COL -->
+					<div class="col-lg-3 col-sm-6 col-xs-12">
+						<div class="newsletter-form">
+							<h4>Subscribe for get updates</h4>
+							 <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
+								<div class="input-group input-group-lg newsletter">
+									<input type="email" name="EMAIL" class="subscribe__input" placeholder="Email Address">
+									<button type="submit" class="subs_btn">Subscribe</button>
+								</div>
+								
+								<div id="mce-responses">
+									<div class="response" id="mce-error-response" style="display:none"></div>
+									<div class="response" id="mce-success-response" style="display:none"></div>
+								</div>
+							</form>
+						</div>
+					</div><!--- END COL -->		
+				</div><!--- END ROW -->		
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="footer_copyright">
+							<p>&copy; {% now "Y" %} {% t "site.title" %},
+								{% t "footer.footer_city_name" %}. 
+								{% t "footer.footer_rights_reserved" %}.
+							</p>
+						</div>
+					</div>
+				</div>				
+			</div><!--- END CONTAINER -->
+		</div>
+		<!-- END FOOTER -->	
+
+		<!-- Latest jQuery -->
+<script src="{% static 'assets/js/jquery-1.12.4.min.js' %}"></script>
+
+<!-- Latest compiled and minified Bootstrap -->
+<script src="{% static 'assets/bootstrap/js/bootstrap.min.js' %}"></script>
+
+<!-- modernizer JS -->
+<script src="{% static 'assets/js/modernizr-2.8.3.min.js' %}"></script>
+
+<!-- owl-carousel min js -->
+<script src="{% static 'assets/owlcarousel/js/owl.carousel.min.js' %}"></script>
+
+<!-- magnific-popup js -->
+<script src="{% static 'assets/js/jquery.magnific-popup.min.js' %}"></script>
+
+<!-- jquery mixitup js -->
+<script src="{% static 'assets/js/jquery.mixitup.js' %}"></script>
+
+<!-- jquery appear js -->
+<script src="{% static 'assets/js/jquery.appear.js' %}"></script>
+
+<!-- countTo js -->
+<script src="{% static 'assets/js/jquery.inview.min.js' %}"></script>
+
+<!-- stellar js -->
+<script src="{% static 'assets/js/jquery.stellar.min.js' %}"></script>
+
+<!-- WOW - Reveal Animations When You Scroll -->
+<script src="{% static 'assets/js/wow.min.js' %}"></script>
+
+<!-- Menu js -->
+<script src="{% static 'assets/js/menu.js' %}"></script>
+
+<script src="{% static 'assets/js/jquery.sticky.js' %}"></script>
+
+<!-- form contact js -->
+<script src="{% static 'assets/js/form-contact.js' %}"></script>
+
+<!-- scrolltopcontrol js -->
+<script src="{% static 'assets/js/scrolltopcontrol.js' %}"></script>
+
+<!-- scripts js -->
+<script src="{% static 'assets/js/scripts.js' %}"></script>
+    </body>
+</html>
