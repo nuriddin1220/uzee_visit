@@ -1,0 +1,19 @@
+{% load static %}
+{% load translation_tags %}
+{% load date_tags %}
+<h4 class="blog_sidebar_title">{% t "general.useful_menus" %}</h4>
+<ul>
+    <li><a href="{% url 'shareholders_meeting' request.CURRENT_LANG %}">
+            <i class="ti-arrow-right"></i>
+            {% t "nav-sub-menu.activity" %}
+    </li>
+    <li><a href="{% url 'projects' request.CURRENT_LANG %}">
+            <i class="ti-arrow-right"></i> 
+            {% t "nav-sub-menu.projects" %}
+    </li>
+    <li><a href="{% url 'internal_documents' request.CURRENT_LANG %}">
+            <i class="ti-arrow-right"></i>
+            {% t "nav-sub-menu.tenders_procurements" %}
+        </a>
+    </li>
+</ul>

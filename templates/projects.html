@@ -1,0 +1,98 @@
+{% extends "index.html" %}
+{% load static %}
+{% load translation_tags %}
+{% load date_tags %}
+
+{% block content %}
+
+<!-- START SECTION TOP -->
+		<section class="section-top bg-light" style="background-image: url('{% static "assets/img/bg/wind_energy_top.jpg" %}');background-size:cover; background-position: center center;">
+			<div class="container">
+				<div class="row">
+				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+					<div class="section-top-title">
+						<h1>{% t "nav-sub-menu.projects" %}</h1>		
+					</div>
+				  </div><!--- END COL -->				  
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END SECTION TOP -->
+		
+		<!-- START PORTFOLIO -->
+		<section id="portfolio" class="portfolio_area section-padding">
+		   <div class="container-fluid">
+				<div class="section-title text-center">
+					<h2 style="text-transform:none;">{% t "home.projects_section_title_projects_screen" %}</h2>
+                    <p>{% t "home.projects_screen_section_description" %}</p>
+				</div>					
+				<div class="portfolio-grid">
+                <div class="row">
+
+                    {% for item in projects %}
+
+                    <div class="col-lg-{% cycle '4' '4' '4' '6' '6' %} col-sm-6 col-xs-12 portfolio-item">
+
+                        <div class="single-gallery">
+
+                            <img
+                                src="{{ item.first_image }}"
+                                class="img-fluid"
+                                alt="{{ item.title }}"
+                                style="width:100%;height:450px;object-fit:cover;"
+                            >
+
+
+                          <h4 class="mb-2">
+                            <span
+                                class="badge bg-primary mb-2 d-inline-block"
+                                style="
+                                    font-size:12px;
+                                    letter-spacing:.5px;
+                                "
+                            >
+                                {{ item.period }}
+                            </span>
+                            <br>
+                            <a
+                                    href="{% url 'project_detail' request.CURRENT_LANG item.id %}"
+                                class="text-white fw-bold"
+                                style="
+                                    text-shadow:
+                                        2px 2px 6px #000,
+                                        0 0 15px #000;
+                                "
+                            >
+                                {{ item.title|truncatechars:180 }}
+                            </a>
+                        </h4>
+
+
+                        </div>
+
+                    </div>
+
+                    {% endfor %}
+
+                </div>
+            </div>
+
+            {% include "pagination.html" %}
+		</section>
+		<!-- END PORTFOLIO -->		
+
+
+        <style>
+.single-gallery h4{
+    opacity:1 !important;
+    visibility:visible !important;
+    display:block !important;
+    bottom:20px !important;
+}
+
+.single-gallery:hover h4{
+    opacity:1 !important;
+    visibility:visible !important;
+}
+</style>
+{% endblock %}

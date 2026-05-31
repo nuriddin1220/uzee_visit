@@ -1,0 +1,113 @@
+{% extends "index.html" %}
+{% load static %}
+{% load translation_tags %}
+{% load date_tags %}
+{% block content %}
+
+<!-- START SECTION TOP -->
+		<section class="section-top" style="background-image: url('{% static "assets/img/bg/vacancy-top-section.jpeg" %}');background-size:cover; background-position: center center;">
+			<div class="container">
+				<div class="row">
+				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+					<div class="section-top-title">
+						<h1>{% t "nav-sub-menu.vacancies" %}</h1>		
+					</div>
+				  </div><!--- END COL -->				  
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END SECTION TOP -->		
+
+		<!-- START BLOG -->
+		<section class="blog-page section-padding">
+			<div class="container">	
+				<div class="row">
+                    <div class="col-lg-3 col-sm-12 col-xs-12 order-2 order-lg-1" style="background-color:#fbfcfe">
+						{% include "sub_menu_left_links.html" %}				
+					</div><!--- END COL -->			
+
+                    
+                    <div class="col-lg-9 col-sm-12 col-xs-12 order-1 order-lg-2">
+                            <h2>{% t "vacancies.available_positions" %}</h2>
+                            <div class="accordion" id="accordion_1">
+                                {% for item in vacancies %}
+                                <div class="accordion-item border rounded-3 mb-1 shadow-sm">
+
+                                    <h2 class="accordion-header ">
+                                        <button
+                                            class="accordion-button collapsed bg-white fw-bold rounded-3"
+                                            type="button"
+                                            data-bs-toggle="collapse"
+                                            data-bs-target="#collapse{{ item.id }}"
+                                        >
+
+                                            <h5>{{ item.title }}</h5>
+                                        </button>
+                                    </h2>
+
+                                    <div
+                                        id="collapse{{ item.id }}"
+                                        class="accordion-collapse collapse"
+                                        data-bs-parent="#accordion_1"
+                                    >
+                                        <div class="accordion-body">
+                                            {{ item.description|linebreaksbr }}
+                                        </div>
+                                    </div>
+
+                                </div>
+                                {% empty %}
+                                <p class="text-center py-5 mb-0">
+                                    {% t "general.no_vacancies" %}
+                                </p>
+                                {% endfor %}
+
+                            </div>
+
+                            {% include "pagination.html" %}
+
+                        </div>
+
+							
+				</div><!-- END ROW-->
+			</div><!-- END CONTAINER-->
+		</section>
+		<!-- END BLOG -->		
+    <!-- HIRE US -->
+    <div class="hire_us_area section-padding">
+        <div class="container">			
+            <div class="row">					
+                <div class="offset-lg-1 col-lg-10 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
+                    <div class="row">
+                        <div class="col-lg-4 col-sm-6 col-xs-12">
+                            <div class="hire_img">
+                                <img src="{% static 'assets/img/icon/search.png' %}" class="img-fluid" alt="" />
+                            </div>
+                        </div><!-- END COL  -->	
+                        <div class="col-lg-8 col-sm-6 col-xs-12">
+                            <div class="hire_content">
+                                <h2>{% t "vacancies.join_our_team" %}</h2>
+                                <p>{% t "vacancies.resume_instruction" %}</p>
+                                {% if resume_template and resume_template.file %}
+                                <a
+                                    class="btn_one me-2"
+                                    href="{{ resume_template.file.url }}"
+                                    download
+                                >
+                                    {% t "vacancies.download_resume_template" %}
+                                </a>
+                                {% endif %}
+
+                                <a class="btn_one" href="{% url 'contact' request.CURRENT_LANG %}">
+                                    {% t "contact.contact_us" %}
+                                </a>
+                            </div>
+                        </div><!-- END COL  -->		
+                    </div><!-- END ROW -->	
+                </div><!-- END COL  -->					
+            </div><!-- END ROW -->				
+        </div><!--- END CONTAINER -->
+    </div>
+    <!-- END HIRE US -->
+
+{% endblock %}

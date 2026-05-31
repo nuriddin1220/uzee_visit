@@ -1,0 +1,62 @@
+@font-face{
+    font-family:'Poppins';
+    src:url('/static/assets/fonts/poppins/Poppins-Light.ttf');
+    font-weight:300;
+}
+
+@font-face{
+    font-family:'Poppins';
+    src:url('/static/assets/fonts/poppins/Poppins-Regular.ttf');
+    font-weight:400;
+}
+
+@font-face{
+    font-family:'Poppins';
+    src:url('/static/assets/fonts/poppins/Poppins-Medium.ttf');
+    font-weight:500;
+}
+
+@font-face{
+    font-family:'Poppins';
+    src:url('/static/assets/fonts/poppins/Poppins-SemiBold.ttf');
+    font-weight:600;
+}
+
+@font-face{
+    font-family:'Poppins';
+    src:url('/static/assets/fonts/poppins/Poppins-Bold.ttf');
+    font-weight:700;
+}
+
+
+@font-face{
+    font-family:'Oswald';
+    src:url('/static/assets/fonts/oswald/Oswald-Light.ttf');
+    font-weight:300;
+}
+
+@font-face{
+    font-family:'Oswald';
+    src:url('/static/assets/fonts/oswald/Oswald-Regular.ttf');
+    font-weight:400;
+}
+
+@font-face{
+    font-family:'Oswald';
+    src:url('/static/assets/fonts/oswald/Oswald-Medium.ttf');
+    font-weight:500;
+}
+
+@font-face{
+    font-family:'Oswald';
+    src:url('/static/assets/fonts/oswald/Oswald-SemiBold.ttf');
+    font-weight:600;
+}
+
+
+
+@font-face{
+    font-family:'Pacifico';
+    src:url('/static/assets/fonts/pacifico/Pacifico-Regular.ttf');
+    font-weight:400;
+}

@@ -1,5 +1,6 @@
 {% load static %}
 {% load translation_tags %}
+{% load date_tags %}
 <!DOCTYPE html>
 <html lang="en">
 
@@ -18,8 +19,9 @@
 		<!-- Latest Bootstrap min CSS -->
 		<link rel="stylesheet" href="{% static 'assets/bootstrap/css/bootstrap.min.css' %}">	
 		<!-- Google Font -->
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800"> 
-		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600">			
+		{% comment %} <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800"> 
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Oswald:300,400,500,600">	
+		<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" >		 {% endcomment %}
 		<!-- Font Awesome CSS -->
 		<link rel="stylesheet" href="{% static 'assets/fonts/font-awesome.min.css' %}">
 		<link rel="stylesheet" href="{% static 'assets/fonts/themify-icons.css' %}">
@@ -28,6 +30,7 @@
 		<link rel="stylesheet" href="{% static 'assets/owlcarousel/css/owl.theme.css' %}">
 		<!--materialdesignicons Css-->
         <link rel="stylesheet" href="{% static 'assets/css/fonts.css' %}">
+		<link rel="stylesheet" href="{% static 'assets/css/google-fonts.css' %}">
 		<!-- animate CSS -->
 		<link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">			
 		<!-- MAGNIFIC CSS -->
@@ -57,7 +60,29 @@
 			  <span class="icon-close2 js-menu-toggle"></span>
 			</div>
 		  </div>
-		  <div class="site-mobile-menu-body"></div>
+		  <div class="site-mobile-menu-body">
+			<div class="d-flex justify-content-center gap-2 mt-3">
+				<a
+					href="/uz{{ request.path|slice:'3:' }}"
+					class="btn btn-sm shadow-sm rounded-pill px-4 {% if request.CURRENT_LANG == 'uz' %}btn-warning{% else %}btn-light{% endif %}"
+				>
+					 O‘Z
+				</a>
+				<a
+					href="/ru{{ request.path|slice:'3:' }}"
+					class="btn btn-sm shadow-sm rounded-pill px-4 {% if request.CURRENT_LANG == 'ru' %}btn-warning{% else %}btn-light{% endif %}"
+				>
+					РУ
+				</a>
+				<a
+					href="/en{{ request.path|slice:'3:' }}"
+					class="btn btn-sm shadow-sm rounded-pill px-4 {% if request.CURRENT_LANG == 'en' %}btn-warning{% else %}btn-light{% endif %}"
+				>
+					EN
+				</a>
+
+			</div>
+		  </div>
 		</div>
 	   
 		<header class="site-navbar js-sticky-header site-navbar-target" role="banner">
@@ -65,25 +90,41 @@
 			<div class="row align-items-center">       
 			  <div class="col-6 col-xl-2">
 				<h1 class="mb-0 site-logo">
-					<a href="{% url 'home_lang' request.CURRENT_LANG %}" class="d-flex align-items-center  text-decoration-none">
-						<img 
-							src="{% static 'assets/img/icon/nav_icon.png' %}" 
-							alt=""
-							style="height:55px;width:auto;"
-						>
-						<span 
-							class="text-white text-nowrap"
-							style="
-								font-family:'Orbitron',sans-serif;
-								font-size:clamp(14px,1.4vw,22px);
-								letter-spacing:1px;
-								font-weight:500;
-							"
-						>
-							{% t "site.title" %}
-						</span>
-					</a>
-				</h1>
+				<a
+					href="{% url 'home_lang' request.CURRENT_LANG %}"
+					class="d-flex align-items-center text-decoration-none"
+				>
+
+					<img
+						src="{% static 'assets/img/icon/nav_icon.png' %}"
+						alt=""
+						style="
+							height:75px;
+							width:auto;
+							filter:
+								drop-shadow(0 4px 10px rgba(0,0,0,.5))
+								brightness(1.1);
+						"
+					>
+
+					<span
+						class="ms-3 text-nowrap"
+						style="
+							font-family:'Orbitron',sans-serif;
+							font-size:clamp(18px,1.8vw,28px);
+							font-weight:700;
+							letter-spacing:1.5px;
+							color:#ffffff;
+							text-shadow:
+								0 2px 8px rgba(0,0,0,.8),
+								0 0 20px rgba(255,255,255,.25);
+						"
+					>
+						{% t "site.title" %}
+					</span>
+
+				</a>
+			</h1>
 			  </div>
 			  <div class="col-12 col-md-10 d-none d-xl-block">
 				<nav class="site-navigation position-relative text-right" role="navigation">
@@ -91,55 +132,76 @@
 				  	<li class="has-children">
 					  <a class="nav-link text-uppercase" href="javascript:void(0)">{% t "nav-menu.about" %}</a>
 					  <ul class="dropdown">
-						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.general_information" %}</a></li>
-						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.management" %}</a></li>
+						<li><a href="{% url 'general_information' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.general_information" %}</a></li>
+						<li><a href="{% url 'management_team' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.management" %}</a></li>
 						{% comment %} <li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.history" %}</a></li> {% endcomment %}
-						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.organizational_structure" %}</a></li>
+						<li><a href="{% url 'organizational_structure' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.organizational_structure" %}</a></li>
 						
-						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.supervisory_board" %}</a></li>
-						<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.vacancies" %}</a></li>
-					  </ul>
+						<li><a href="{% url 'supervisory_board' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.supervisory_board" %}</a></li>
+						<li><a href="{% url 'vacancies' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.vacancies" %}</a></li>
+					
+
+
+					</ul>
 					</li>	
 					<li class="has-children">
 						<a href="javascript:void(0)" class="nav-link text-uppercase">
 							{% t "nav-menu.shareholders_investors" %}
 						</a>
 						<ul class="dropdown">
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.shareholders_meeting" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.development_strategy" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.internal_documents" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.business_plan" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.dividends" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.reports" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.charter" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.emission_prospectus" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.audit_report" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.important_facts" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.comply_explain" %}</a></li>
-							<li><a href="#" class="nav-link">{% t "nav-sub-menu.affiliated_persons" %}</a></li>
+							<li><a href="{% url 'shareholders_meeting' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.shareholders_meeting" %}</a></li>
+							<li><a href="{% url 'development_strategy' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.development_strategy" %}</a></li>
+							<li><a href="{% url 'internal_documents' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.internal_documents" %}</a></li>
+							<li><a href="{% url 'business_plan' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.business_plan" %}</a></li>
+							<li><a href="{% url 'dividends' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.dividends" %}</a></li>
+							<li><a href="{% url 'reports' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.reports" %}</a></li>
+							<li><a href="{% url 'charter' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.charter" %}</a></li>
+							<li><a href="{% url 'emission_prospectus' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.emission_prospectus" %}</a></li>
+							<li><a href="{% url 'audit_report' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.audit_report" %}</a></li>
+							<li><a href="{% url 'important_facts' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.important_facts" %}</a></li>
+							<li><a href="{% url 'comply_explain' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.comply_explain" %}</a></li>
+							<li><a href="{% url 'affiliated_persons' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.affiliated_persons" %}</a></li>
 						</ul>
 					</li>				 							
 					<li class="has-children">
 						<a href="javascript:void(0)" class="nav-link text-uppercase">{% t "nav-menu.services" %}</a>
 						<ul class="dropdown">
-							<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.activity" %}</a></li>
-							<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.projects" %}</a></li>
-							<li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.tenders_procurements" %}</a></li>
+							<li><a href="{% url 'activity_list' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.activity" %}</a></li>
+							<li><a href="{% url 'projects' request.CURRENT_LANG %}" class="nav-link text-uppercase">{% t "nav-sub-menu.projects" %}</a></li>
+							{% comment %} <li><a href="#" class="nav-link text-uppercase">{% t "nav-sub-menu.tenders_procurements" %}</a></li> {% endcomment %}
 						</ul>
 					</li>								
 			        <li><a class="nav-link text-uppercase" href="{% url 'contact' request.CURRENT_LANG %}">{% t "nav-menu.contact" %}</a>
 					</li>		
-				  </ul>
+				  
+			<li class="ms-3">
+				<select
+					class="language-select form-select form-select-sm border-0 shadow-none"
+					onchange="
+						window.location.href='/' +
+						this.value +
+						'{{ request.path|slice:'3:' }}'
+					"
+				>
+					<option value="uz" {% if request.CURRENT_LANG == 'uz' %}selected{% endif %}>O'zbek</option>
+					<option value="ru" {% if request.CURRENT_LANG == 'ru' %}selected{% endif %}>Русский</option>
+					<option value="en" {% if request.CURRENT_LANG == 'en' %}selected{% endif %}>English</option>
+				</select>
+			</li>
+
+
+				</ul>
 				</nav>
 			  </div>
-			   <div class="col-6 d-inline-block d-xl-none ml-md-0 py-3" style="position: relative; top: 3px;">
-			   <a href="#" class="site-menu-toggle js-menu-toggle float-right"><span class="icon-menu h3"></span></a>
-			   </div>
+			  	<div class="col-6 d-flex d-xl-none justify-content-end align-items-center">
+					<a href="#" class="site-menu-toggle js-menu-toggle">
+						<span class="icon-menu h3"></span>
+					</a>
+				</div>
 			</div>
 		  </div>
 		</header>
 	   <!-- END NAVBAR-->				
-	
 
 	   {% block content %}
 
@@ -150,14 +212,16 @@
 				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
 					<div class="hero-text">
 						<h2>{% t "home.hero_title" %}</h2>
-						<p>{% t "home.hero_description" %}</p>
-						<a href="about.html">{% t "home.learn_more" %}</a>
+						<p class="text-white fw-semibold fs-4">
+							{% t "home.hero_description" %}
+						</p>
+						<a href="{% url 'general_information' request.CURRENT_LANG %}">{% t "home.learn_more" %}</a>
 					</div>
 				  </div><!--- END COL -->				  
 				</div><!--- END ROW -->
 			</div><!--- END CONTAINER -->
 		</section>
-		<!-- END  HOME -->	
+		<!-- END  HOME -->
 
 		<!-- FEATURES -->
 		<section class="feature_area">
@@ -354,140 +418,123 @@
 				<div class="row">
 					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="single_why_choose">
-							<h2>We create <br /> amazing digital <br /> products</h2>
-							<p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry standard dummy text ever since the when an unknown printer took a galley of type and scrambled it to make a type specimen book. It is a long established fact that a reader. It was popularised in the with the release.</p>
-							<a class="btn_one" href="about.html">Learn More</a>
+							<h2>{% t "home.projects_section_title" %}</h2>
+							{% t "home.projects_section_description" as project_desc %}
+							<p>
+								{{ project_desc|linebreaksbr }}
+							</p>
+							<a class="btn_one" href="{% url 'projects' request.CURRENT_LANG %}">{% t "home.view_more" %}</a>
 						</div>							
 					</div><!--- END COL -->	
 					<div class="col-lg-6 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-						<div class="single_why_choose_img">
-							<img src="{% static 'assets/img/home-office.png' %}" class="img-fluid" alt="about-image" />
-						</div>							
+					<div class="single_why_choose_img position-relative py-5">
+
+							<!-- Background image -->
+							<img
+								src="{% static 'assets/img/icon/power_plant.jpg' %}"
+								class="img-fluid position-absolute rounded-4 shadow"
+								alt=""
+								style="
+									width:80%;
+									left:-10px;
+									bottom:-60px;
+									z-index:1;
+									transform:rotate(-4deg);
+									transition:.6s ease;
+								"
+							>
+
+							<!-- Main image -->
+							<img
+								src="{% static 'assets/img/icon/substation_home_page.jpg' %}"
+								class="img-fluid rounded-4 shadow-lg position-relative"
+								alt="about-image"
+								style="
+									width:92%;
+									margin-left:auto;
+									display:block;
+									z-index:2;
+									transition:.6s ease;
+								"
+							>
+
+						</div>
+
+						
 					</div><!--- END COL -->	
 				</div><!--- END ROW -->			
 			</div><!--- END CONTAINER -->		
 		</section>
 		<!-- END WHY CHOOSE US-->	
 
-		<!-- START PORTFOLIO -->
-		<section id="portfolio" class="portfolio_area section-padding">
-		   <div class="container-fluid">
-				<div class="section-title text-center">
-					<h2>Latest Works</h2>
-					<p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout.</p>
-				</div>	
-				<div class="col-lg-12 text-center">
-					<div class="portfolio_filter">
-						<ul>
-							<li class="active filter" data-filter="all">All</li>
-							<li class="filter" data-filter=".branding">Branding</li>
-							<li class="filter" data-filter=".webtemplate">Web Template</li>
-							<li class="filter" data-filter=".seo">SEO</li>
-							<li class="filter" data-filter=".digital">Digital Marketing</li>
-						</ul>
-					</div>
-				</div>					
-				<div class="portfolio-grid">									
-					<div class="row">									
-						<div class="col-lg-4 col-sm-6 col-xs-12 portfolio-item mix webtemplate seo">
-							<div class="single-gallery">
-								<img src="{% static 'assets/img/portfolio/1.jpg' %}" class="img-fluid" alt="gallery Image">
-									<a href="{% static 'assets/img/portfolio/1.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
-								<h4><a href="single_project.html">View Project</a></h4>
-							</div>
-						</div><!-- End Col -->
-						<div class="col-lg-4 col-sm-6 col-xs-12 portfolio-item mix branding">
-							<div class="single-gallery">
-								<img src="{% static 'assets/img/portfolio/2.jpg' %}" class="img-fluid" alt="gallery Image">
-								<a href="{% static 'assets/img/portfolio/2.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
-								<h4><a href="single_project.html">View Project</a></h4>
-							</div>
-						</div><!-- End Col -->	
-						<div class="col-lg-4 col-sm-6 col-xs-12 portfolio-item  mix webtemplate digital">
-							<div class="single-gallery">
-								<img src="{% static 'assets/img/portfolio/3.jpg' %}" class="img-fluid" alt="gallery Image">
-									<a href="{% static 'assets/img/portfolio/3.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
-								<h4><a href="single_project.html">View Project</a></h4>
-							</div>
-						</div><!-- End Col -->
-						<div class="col-lg-6 col-sm-6 col-xs-12 portfolio-item  mix digital seo">
-							<div class="single-gallery">
-								<img src="{% static 'assets/img/portfolio/4.jpg' %}" class="img-fluid" alt="gallery Image">
-								<a href="{% static 'assets/img/portfolio/4.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
-								<h4><a href="single_project.html">View Project</a></h4>
-							</div>
-						</div><!-- End Col -->		
-						<div class="col-lg-6 col-sm-6 col-xs-12 portfolio-item mix webtemplate seo">
-							<div class="single-gallery">
-								<img src="{% static 'assets/img/portfolio/5.jpg' %}" class="img-fluid" alt="gallery Image">
-								<a href="{% static 'assets/img/portfolio/5.jpg' %}" class="gallery_enlarge_icon"><i class="ti-eye"></i></a>
-								<h4><a href="single_project.html">View Project</a></h4>
-							</div>
-						</div><!-- End Col -->									
-					</div><!-- END ROW -->
-					<div class="col-lg-12 text-center">
-						<div class="portfolio_btn">
-							<a class="btn_one" href="portfolio.html">{% t "home.view_more" %}</a>
-						</div>
-					</div><!-- END Col -->
-				</div>
-			</div><!-- END CONTAINER -->
-		</section>
-		<!-- END PORTFOLIO -->		
 
-		<!-- BLOG -->
+		<!-- NEWS -->
 		<section class="blog_area section-padding">
 			<div class="container">
 				<div class="section-title text-center">
-					<h2>{% t "home.latest_news" %}</h2>
+					<h2 style="text-transform:none;">{% t "home.latest_news" %}</h2>
 					<p>{% t "home.latest_news_description" %}</p>
 				</div>				
-				<div class="row text-center">					
+				<div class="row text-center justify-content-center">
+					{% for item in news_list %}
 					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
 						<div class="home_single_blog">
-							<img src="{% static 'assets/img/blog/1.jpg' %}" class="img-fluid" alt="blog-image" />
+							<img 
+								src="{{ item.first_image }}"
+								class="img-fluid"
+								alt="{{ item.title }}"
+								style="
+									width:100%;
+									height:260px;
+									object-fit:cover;
+								"
+							/>
 							<div class="home_blog_content">
 								<div class="blog_title_info">
-									<h2><a href="blog_single.html">Tiktok Illegally collecting data sharing</a></h2>
-									<span>August 31, 2026</span>
-									<span><a href="blog_single.html">Marketing</a></span>
+									<h2>
+										<a 
+											href="{% url 'news_detail' request.CURRENT_LANG item.id %}"
+											title="{{ item.title }}"
+											style="
+												display:-webkit-box;
+												-webkit-line-clamp:3;
+												-webkit-box-orient:vertical;
+												overflow:hidden;
+												text-overflow:ellipsis;
+												min-height:84px;
+											"
+										>
+											{{ item.title }}
+										</a>
+									</h2>
+									<span>{{ item.news_date|custom_date:request.CURRENT_LANG }}</span>
+									<span><a href="{{ item.social_link }}" target="_blank">LinkedIn</a></span>
 								</div>
-								<p>Sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur elit.</p>
-								<a class="home_b_btn" href="blog_single.html">Read More</a>
-							</div>
-						</div>
-					</div><!-- END COL -->				
-					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-						<div class="home_single_blog">
-							<img src="{% static 'assets/img/blog/2.jpg' %}" class="img-fluid" alt="blog-image" />
-							<div class="home_blog_content">
-								<div class="blog_title_info">
-									<h2><a href="blog_single.html">How can use our latest news by Monoline</a></h2>
-									<span>Sep 01, 2026</span>
-									<span><a href="blog_single.html">Design</a></span>
-								</div>
-								<p>Sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur elit.</p>
-								<a class="home_b_btn" href="blog_single.html">Read More</a>
-							</div>
-						</div>
-					</div><!-- END COL -->				
-					<div class="col-lg-4 col-sm-4 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-						<div class="home_single_blog">
-							<img src="{% static 'assets/img/blog/3.jpg' %}" class="img-fluid" alt="blog-image" />
-							<div class="home_blog_content">
-								<div class="blog_title_info">
-									<h2><a href="blog_single.html">Learning and growing in the first year</a></h2>
-									<span>Sep 02, 2026</span>
-									<span><a href="blog_single.html">Agency</a></span>
-								</div>
-								<p>Sed do eiusmod tempor incididunt ut labore. Lorem ipsum dolor sit amet, consectetur elit.</p>
-								<a class="home_b_btn" href="blog_single.html">{% t "home.read_more" %}</a>
+								<p
+									style="
+										display:-webkit-box;
+										-webkit-line-clamp:3;
+										-webkit-box-orient:vertical;
+										overflow:hidden;
+										text-overflow:ellipsis;
+										min-height:72px;
+									"
+								>
+									{{ item.text }}
+								</p>
+								<a 
+									class="home_b_btn"
+									href="{% url 'news_detail' request.CURRENT_LANG item.id %}"
+								>
+									{% t "home.read_more" %}
+								</a>
 							</div>
 						</div>
 					</div><!-- END COL -->	
+					{% endfor %}
 					<div class="col-lg-12 text-center">
 						<div class="portfolio_btn">
-							<a class="btn_one" href="portfolio.html">
+							<a class="btn_one" href="{% url 'news_list' request.CURRENT_LANG %}">
 								{% t "home.view_more" %}
 							</a>
 						</div>
@@ -495,57 +542,78 @@
 				</div><!-- END ROW -->				
 			</div><!--- END CONTAINER -->
 		</section>
-		<!-- END BLOG -->		
+		<!-- END NEWS -->		
 
 		{% endblock %}
 
-		<!-- START PARTNER LOGO -->
+
+		<!-- START partners -->
 		<div class="partner-logo section-padding">
-			<div class="container">										
-				<div class="row text-center">
-					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.1s" data-wow-offset="0">
-						<div class="single_logo single_logo_bm">
-							<a href="#"><img src="{% static 'assets/img/partner/1.png' %}" alt="" class="img-fluid"/></a>
-						</div>						
-					</div><!--- END COL -->
-					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.2s" data-wow-offset="0">
-						<div class="single_logo">
-							<a href="#"><img src="{% static 'assets/img/partner/2.png' %}" alt="" class="img-fluid"/></a>
-						</div>						
-					</div><!--- END COL -->
-					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
-						<div class="single_logo single_logo_bm">
-							<a href="#"><img src="{% static 'assets/img/partner/3.png' %}" alt="" class="img-fluid"/></a>
-						</div>						
-					</div><!--- END COL -->
-					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.4s" data-wow-offset="0">
-						<div class="single_logo">
-							<a href="#"><img src="{% static 'assets/img/partner/4.png' %}" alt="" class="img-fluid"/></a>
-						</div>						
-					</div><!--- END COL -->
-					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.5s" data-wow-offset="0">
-						<div class="single_logo">
-							<a href="#"><img src="{% static 'assets/img/partner/5.png' %}" alt="" class="img-fluid"/></a>
-						</div>						
-					</div><!--- END COL -->
-					<div class="col-lg-2 col-sm-4 col-xs-12 no-padding wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.6s" data-wow-offset="0">
-						<div class="single_logo">
-							<a href="#"><img src="{% static 'assets/img/partner/6.png' %}" alt="" class="img-fluid"/></a>
-						</div>						
-					</div><!--- END COL -->
-				</div><!--- END ROW -->
-			</div><!--- END CONTAINER -->	
+			<div class="container">
+				<div class="section-title text-center">
+					<h2>{% t "home.our_partners" %}</h2>
+				</div>
+				<div class="partner-slider owl-carousel">
+					{% for item in partners %}
+					<div class="single_logo text-center">
+						<a href="javascript:void(0)">
+							<img 
+								src="{{ item.image.url }}"
+								alt="{{ item.title }}"
+								class="img-fluid"
+								style="
+									height:90px;
+									width:auto;
+									margin:auto;
+									object-fit:contain;
+								"
+							/>
+						</a>
+					</div>
+					{% endfor %}
+				</div>
+			</div>
 		</div>
-		<!-- END PARTNER LOGO -->
-		
+		<!-- END partners -->
+
+
 		<!-- START FOOTER -->
 		<div class="footer" style="background-image: url('{% static "assets/img/bg/footer.png" %}'); background-size:cover;">
 			<div class="container">		
 				<div class="row footer_bg">						
 					<div class="col-lg-3 col-sm-6 col-xs-12">
 						<div class="footer_logo">
-							<img src="{% static 'assets/img/logo.png' %}" alt="" />
-							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Fusce vitae risus nec dui venenatis dignissim.</p>
+							<div class="d-flex align-items-center mb-3">
+								<img
+									src="{% static 'assets/img/icon/nav_icon.png' %}"
+									alt="{% t 'site.title' %}"
+									style="
+										height:90px;
+										width:auto;
+									"
+								>
+								<h1
+									class="text-white fw-semibold mb-0"
+									style="
+										margin-left:-5px;
+										letter-spacing:1px;
+										line-height:1;
+									"
+								>
+									{% t "site.short_title" %}
+								</h1>
+							</div>
+							<p class="text-warning opacity-75 mb-0">
+								<i
+									class="fa fa-code me-2"
+									style="color:#00d4ff;"
+								></i>
+								{% t "footer.website_developed_by" %}
+							</p>
+							<p class="text-light opacity-75">
+								{% t "general.we_on_social_media" %}
+							</p>
+
 						</div>
 						<div class="social_profile">
 							<ul>
@@ -558,49 +626,70 @@
 					</div><!--- END COL -->						
 					<div class="col-lg-3 col-sm-6 col-xs-12">
 						<div class="single_footer">
-							<h4>Frequently Asked Questions</h4>
+							<h4 class="text-decoration-none text-white" style="text-transform:none;">{% t "footer.useful_links" %}</h4>
 							<ul>
-								<li><a href="#">Privacy & Securty</a></li>
-								<li><a href="#">Terms of Service</a></li>
-								<li><a href="#">Communications</a></li>
-								<li><a href="#">Referral Terms</a></li>
-								<li><a href="#">Disclaimers</a></li>
+								<li><a class="text-decoration-none text-white" href="{% url 'general_information' request.CURRENT_LANG %}">{% t "nav-sub-menu.general_information" %}</a></li>
+								<li><a class="text-decoration-none text-white" href="{% url 'management_team' request.CURRENT_LANG %}">{% t "nav-sub-menu.management" %}</a></li>
+								<li><a class="text-decoration-none text-white" href="{% url 'supervisory_board' request.CURRENT_LANG %}">{% t "nav-sub-menu.supervisory_board" %}</a></li>
+								<li><a class="text-decoration-none text-white" href="{% url 'projects' request.CURRENT_LANG %}">{% t "nav-sub-menu.projects" %}</a></li>
+								<li><a class="text-decoration-none text-white" href="{% url 'organizational_structure' request.CURRENT_LANG %}">{% t "nav-sub-menu.organizational_structure" %}</a></li>
 							</ul>
 						</div>
 					</div><!--- END COL -->	
 					<div class="col-lg-3 col-sm-6 col-xs-1">
 						<div class="single_footer">
-							<h4>Company</h4>
-							<ul>
-								<li><a href="#">Licenses</a></li>
-								<li><a href="#">market API</a></li>
-								<li><a href="#">Careers and job</a></li>
-								<li><a href="#">Emplois en France</a></li>
-								<li><a href="#">Jobs in Deutschland	</a></li>						
-							</ul>
+							<h4 class="text-decoration-none text-white">{% t "footer.address" %}</h4>
+							<div>
+							<div class="text-white mb-3 fs-5">
+								<i class="fa fa-building me-2"></i>
+								{{ footer_contact.title }}
+							</div>
+							<div class="text-light opacity-75 mb-3 d-flex">
+								<i class="fa fa-map-marker me-3 mt-1"></i>
+								<span>{{ footer_contact.address }}</span>
+							</div>
+							<div class="mb-2">
+								<a
+									href="tel:{{ footer_contact.phone }}"
+									class="text-decoration-none text-white"
+								>
+									<i class="fa fa-phone me-2"></i>
+									{{ footer_contact.phone }}
+								</a>
+							</div>
+							<div>
+								<a
+									href="mailto:{{ footer_contact.email }}"
+									class="text-decoration-none text-white"
+								>
+									<i class="fa fa-envelope me-2"></i>
+									{{ footer_contact.email }}
+								</a>
+							</div>
+						</div>
 						</div>
 					</div><!--- END COL -->
 					<div class="col-lg-3 col-sm-6 col-xs-12">
 						<div class="newsletter-form">
-							<h4>Subscribe for get updates</h4>
-							 <form id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate">
-								<div class="input-group input-group-lg newsletter">
-									<input type="email" name="EMAIL" class="subscribe__input" placeholder="Email Address">
-									<button type="submit" class="subs_btn">Subscribe</button>
-								</div>
-								
-								<div id="mce-responses">
-									<div class="response" id="mce-error-response" style="display:none"></div>
-									<div class="response" id="mce-success-response" style="display:none"></div>
-								</div>
-							</form>
+							<h4 style="text-transform:none;">
+								{% t "general.our_branches" %}
+							</h4>
+							 <div class="d-flex flex-column gap-3 mt-4">
+								<a href="https://uzassystem.uz/" target="_blank">
+									<img src="{% static 'assets/img/icon/uzassystem.jpg' %}" alt="" width="200">
+								</a>
+								<a href="https://srepae.com/" target="_blank">
+									<img src="{% static 'assets/img/icon/srepae.jpg' %}" alt="" width="200">
+								</a>
+
+							</div>
 						</div>
 					</div><!--- END COL -->		
 				</div><!--- END ROW -->		
 				<div class="row">
 					<div class="col-lg-12 text-center">
 						<div class="footer_copyright">
-							<p>&copy; {% now "Y" %} {% t "site.title" %},
+							<p class='fs-5'>&copy; {% now "Y" %} {% t "site.title" %},
 								{% t "footer.footer_city_name" %}. 
 								{% t "footer.footer_rights_reserved" %}.
 							</p>
@@ -611,6 +700,66 @@
 		</div>
 		<!-- END FOOTER -->	
 
+
+
+<style>
+	.single_why_choose_img{
+		overflow:visible;
+	}
+
+	.single_why_choose_img:hover > img:first-child{
+		transform:rotate(-16deg) translate(-15px,-10px);
+	}
+
+	.single_why_choose_img:hover > img:last-child{
+		transform:translateY(-8px);
+	}
+
+@media (max-width:991px){
+
+    .site-logo img{
+        height:45px !important;
+    }
+
+    .site-logo span{
+        font-size:12px !important;
+
+        white-space:nowrap !important;
+    }
+
+}
+.form-select option{
+    color:#183153;
+    background:#fff;
+}
+	
+
+.language-select{
+	width:100px !important;
+	background:transparent !important;
+	color:#183153 !important;
+	font-weight:600;
+	border:none !important;
+	border-bottom:1px solid rgba(255,255,255,.2) !important;
+	border-radius:0 !important;
+	}
+
+	.language-select:hover{
+	background:rgba(255,255,255,.14) !important;
+	border-color:rgba(245,163,0,.5) !important;
+	}
+
+	.language-select:focus{
+		box-shadow:none !important;
+		border-color:#f5a300 !important;
+	}
+
+	.language-select option{
+		
+		color:#fff;
+	}
+</style>
+		
 		<!-- Latest jQuery -->
 <script src="{% static 'assets/js/jquery-1.12.4.min.js' %}"></script>
 
@@ -654,5 +803,23 @@
 
 <!-- scripts js -->
 <script src="{% static 'assets/js/scripts.js' %}"></script>
+
+	<script>
+	$(document).ready(function(){
+
+		$('.partner-slider').owlCarousel({
+			autoPlay: 2000,
+			items: 6,
+			itemsDesktop: [1199,5],
+			itemsDesktopSmall: [979,4],
+
+			stopOnHover: false,
+			pagination: false,
+			navigation: false
+		});
+
+	});
+	</script>
+ 
     </body>
 </html>

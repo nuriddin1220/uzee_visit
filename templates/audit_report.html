@@ -1,0 +1,87 @@
+{% extends "index.html" %}
+{% load static %}
+{% load translation_tags %}
+{% load date_tags %}
+{% block content %}
+
+<!-- START SECTION TOP -->
+		<section class="section-top" style="background-image: url('{% static "assets/img/bg/organisation_documents.jpg" %}');background-size:cover; background-position: center center;">
+			<div class="container">
+				<div class="row">
+				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+					<div class="section-top-title">
+						<h1>{% t "nav-sub-menu.audit_report" %}</h1>		
+					</div>
+				  </div><!--- END COL -->				  
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END SECTION TOP -->		
+
+		<!-- START BLOG -->
+		<section class="blog-page section-padding">
+			<div class="container">	
+				<div class="row">
+					<div class="col-lg-8 col-sm-12 col-xs-12">
+						<div class="home_single_blog">
+							<div class="home_blog_content">
+								<div class="blog_title_info">
+									<h2><a href="javascript:void(0);">{{ report.title }}</a></h2>
+								</div>
+								<p class="news-text">
+                                    {{ report.description|linebreaksbr }}
+                                </p>
+								<a 
+                                    class="home_b_btn read-more-btn"
+                                    href="javascript:void(0);"
+                                    data-read-more="{% t 'home.read_more' %}"
+                                    data-show-less="{% t 'home.show_less' %}"
+                                >
+                                    {% t "home.read_more" %}
+                                </a>
+                                <div class="blog_title_info">
+									<h5>{% t "general.attached_documents" %}</h5>
+								</div>
+                                
+                                {% include "files_grid.html" %}
+                                
+                                {% include "pagination.html" %}
+                                <!-- END BLOG -->
+							</div>	
+					</div><!-- END COL-->		
+					<div class="col-lg-4 col-sm-12 col-xs-12">
+						<div class="categories">
+							{% include "sidebar_links.html" %}
+						</div>					
+					</div><!--- END COL -->					
+				</div><!-- END ROW-->
+			</div><!-- END CONTAINER-->
+		</section>
+		<!-- END BLOG -->		
+
+
+<style>
+.news-text{
+	display:-webkit-box;
+	-webkit-line-clamp:3;
+	-webkit-box-orient:vertical;
+	overflow:hidden;
+}
+.news-text.active{
+	-webkit-line-clamp:unset;
+}
+</style>
+
+
+<script>
+document.querySelectorAll(".read-more-btn").forEach(btn=>{
+	btn.onclick=function(){
+		const text=this.previousElementSibling
+		text.classList.toggle("active")
+		this.innerText=text.classList.contains("active")
+			? this.dataset.showLess
+			: this.dataset.readMore
+	}
+})
+</script>
+{% endblock %}

@@ -1,5 +1,26 @@
 from django.contrib import admin
-from .models import Translation,Contact,Advantage,Statistics
+from .models import Translation,Contact,Advantage,Statistics,Partner
+from .models import News,NewsImage
+from .models import ShareholderMeeting,ShareholderMeetingFile
+from .models import DevelopmentStrategy,DevelopmentStrategyFile
+from .models import InternalDocumentFile,InternalDocument
+from .models import BusinessPlanFile,BusinessPlan
+from .models import DividendFile,Dividend
+from .models import ReportFile,Report
+from .models import CharterFile,Charter
+from .models import EmissionProspectusFile,EmissionProspectus
+from .models import AuditReportFile,AuditReport
+from .models import ImportantFactFile,ImportantFact
+from .models import ComplyExplainFile,ComplyExplain
+from .models import AffiliatedPersonFile,AffiliatedPerson
+from .models import ManagementTeam
+from .models import ResumeTemplate
+from .models import Vacancy
+from .models import SupervisoryBoardMember
+from .models import OrganizationStructureFile,OrganizationStructure
+from .models import AboutCompanyChronology,AboutCompany
+from .models import ProjectImage,Project
+from .models import Activity
 
 
 @admin.register(Translation)
@@ -159,3 +180,673 @@ class StatisticsAdmin(admin.ModelAdmin):
 
     def has_add_permission(self,request):
         return not Statistics.objects.exists()
+    
+    
+
+
+
+
+@admin.register(Partner)
+class PartnerAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "id",
+        "title",
+        "created_at"
+    )
+
+    search_fields = (
+        "title",
+    )
+    
+
+
+
+class NewsImageInline(admin.TabularInline):
+
+    model=NewsImage
+    extra=1
+
+
+@admin.register(News)
+class NewsAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "news_date",
+        "created_at"
+    )
+
+    list_filter=(
+        "news_date",
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    date_hierarchy="news_date"
+
+    inlines=[
+        NewsImageInline
+    ]
+    
+    
+
+
+
+
+
+
+class ShareholderMeetingFileInline(admin.TabularInline):
+
+    model=ShareholderMeetingFile
+    extra=1
+
+
+@admin.register(ShareholderMeeting)
+class ShareholderMeetingAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        ShareholderMeetingFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not ShareholderMeeting.objects.exists()
+    
+    
+    
+class DevelopmentStrategyFileInline(admin.TabularInline):
+
+    model=DevelopmentStrategyFile
+    extra=1
+
+
+@admin.register(DevelopmentStrategy)
+class DevelopmentStrategyAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        DevelopmentStrategyFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not DevelopmentStrategy.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+    
+class InternalDocumentFileInline(admin.TabularInline):
+
+    model=InternalDocumentFile
+    extra=1
+
+
+@admin.register(InternalDocument)
+class InternalDocumentAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        InternalDocumentFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not InternalDocument.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+
+class BusinessPlanFileInline(admin.TabularInline):
+
+    model=BusinessPlanFile
+    extra=1
+
+
+@admin.register(BusinessPlan)
+class BusinessPlanAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        BusinessPlanFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not BusinessPlan.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class DividendFileInline(admin.TabularInline):
+
+    model=DividendFile
+    extra=1
+
+
+@admin.register(Dividend)
+class DividendAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        DividendFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not Dividend.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class ReportFileInline(admin.TabularInline):
+
+    model=ReportFile
+    extra=1
+
+
+@admin.register(Report)
+class ReportAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        ReportFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not Report.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class CharterFileInline(admin.TabularInline):
+
+    model=CharterFile
+    extra=1
+
+
+@admin.register(Charter)
+class CharterAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        CharterFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not Charter.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class EmissionProspectusFileInline(admin.TabularInline):
+
+    model=EmissionProspectusFile
+    extra=1
+
+
+@admin.register(EmissionProspectus)
+class EmissionProspectusAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        EmissionProspectusFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not EmissionProspectus.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class AuditReportFileInline(admin.TabularInline):
+
+    model=AuditReportFile
+    extra=1
+
+
+@admin.register(AuditReport)
+class AuditReportAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        AuditReportFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not AuditReport.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class ImportantFactFileInline(admin.TabularInline):
+
+    model=ImportantFactFile
+    extra=1
+
+
+@admin.register(ImportantFact)
+class ImportantFactAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        ImportantFactFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not ImportantFact.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class ComplyExplainFileInline(admin.TabularInline):
+
+    model=ComplyExplainFile
+    extra=1
+
+
+@admin.register(ComplyExplain)
+class ComplyExplainAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        ComplyExplainFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not ComplyExplain.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class AffiliatedPersonFileInline(admin.TabularInline):
+
+    model=AffiliatedPersonFile
+    extra=1
+
+
+@admin.register(AffiliatedPerson)
+class AffiliatedPersonAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        AffiliatedPersonFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not AffiliatedPerson.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+@admin.register(ManagementTeam)
+class ManagementTeamAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "full_name_uz",
+        "position_uz",
+        "phone_number",
+        "order"
+    )
+
+    list_editable=(
+        "order",
+    )
+
+    search_fields=(
+        "full_name_uz",
+        "full_name_ru",
+        "full_name_en",
+        "position_uz",
+        "position_ru",
+        "position_en"
+    )
+
+    ordering=("order",)
+    
+    
+@admin.register(ResumeTemplate)
+class ResumeTemplateAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "updated_at"
+    )
+
+    def has_add_permission(self,request):
+
+        return not ResumeTemplate.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+@admin.register(Vacancy)
+class VacancyAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    ordering=(
+        "-id",
+    )
+    
+    
+@admin.register(SupervisoryBoardMember)
+class SupervisoryBoardMemberAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "order",
+        "full_name_uz",
+        "position_uz",
+        "is_auditor"
+    )
+
+    list_filter=(
+        "is_auditor",
+    )
+
+    search_fields=(
+        "full_name_uz",
+        "full_name_ru",
+        "full_name_en",
+        "position_uz",
+        "position_ru",
+        "position_en"
+    )
+
+    ordering=(
+        "order",
+    )
+    
+class OrganizationStructureFileInline(admin.TabularInline):
+
+    model=OrganizationStructureFile
+    extra=1
+
+
+@admin.register(OrganizationStructure)
+class OrganizationStructureAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    inlines=[
+        OrganizationStructureFileInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not OrganizationStructure.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class AboutCompanyChronologyInline(admin.TabularInline):
+
+    model=AboutCompanyChronology
+    extra=1
+
+
+@admin.register(AboutCompany)
+class AboutCompanyAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    inlines=[
+        AboutCompanyChronologyInline
+    ]
+
+    def has_add_permission(self,request):
+
+        return not AboutCompany.objects.exists()
+
+    def has_delete_permission(self,request,obj=None):
+
+        return False
+    
+    
+class ProjectImageInline(admin.TabularInline):
+
+    model=ProjectImage
+    extra=1
+
+
+@admin.register(Project)
+class ProjectAdmin(admin.ModelAdmin):
+
+    list_display=(
+        "id",
+        "title_uz",
+        "period",
+        "created_at"
+    )
+
+    search_fields=(
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )
+
+    list_filter=(
+        "created_at",
+    )
+
+    readonly_fields=(
+        "created_at",
+    )
+
+    inlines=[
+        ProjectImageInline
+    ]
+    
+    
+@admin.register(Activity)
+class ActivityAdmin(admin.ModelAdmin):
+
+    list_display = (
+        "id",
+        "title_uz",
+        "created_at"
+    )
+
+    search_fields = (
+        "title_uz",
+        "title_ru",
+        "title_en"
+    )

@@ -1,0 +1,137 @@
+{% extends "index.html" %}
+{% load static %}
+{% load translation_tags %}
+{% load date_tags %}
+{% block content %}
+
+<!-- START SECTION TOP -->
+		<section class="section-top" style="background-image: url('{% static "assets/img/bg/office-board.jpeg" %}');background-size:cover; background-position: center center;">
+			<div class="container">
+				<div class="row">
+				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+					<div class="section-top-title">
+						<h1>{% t "nav-sub-menu.management" %}</h1>		
+					</div>
+				  </div><!--- END COL -->				  
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END SECTION TOP -->		
+
+		<!-- START BLOG -->
+		<section class="blog-page section-padding">
+			<div class="container">	
+				<div class="row">
+                    <div class="col-lg-3 col-sm-12 col-xs-12 order-2 order-lg-1" style="background-color:#fbfcfe">
+						{% include "sub_menu_left_links.html" %}				
+					</div><!--- END COL -->			
+
+					<div class="col-lg-9 col-sm-12 col-xs-12 order-1 order-lg-2">
+                                <h2>{% t "management.company_management" %}</h2>
+                                {% for item in staff %}
+
+                                    <div
+                                        class="mb-4 p-4"
+                                        style="
+                                            background:
+                                                {% if item.order == 0 %}
+                                                linear-gradient(rgba(61,74,99,.92),rgba(61,74,99,.92))
+                                                {% else %}
+                                                linear-gradient(rgba(249,249,249,.96),rgba(249,249,249,.96))
+                                                {% endif %},
+                                                url('{% static "assets/img/bg/section-top.png" %}');
+                                            background-size:cover;
+                                            background-position:center;
+                                            border-radius:8px;
+                                        "
+                                    >
+
+                                        <div class="row align-items-center">
+
+                                            <div class="col-md-3 text-center">
+                                                <img
+                                                    src="{{ item.image.url }}"
+                                                    alt=""
+                                                    class='rounded-1'
+                                                    style="width:160px;height:200px;object-fit:cover"
+                                                >
+                                            </div>
+
+                                            <div class="col-md-9">
+
+                                               <h5 class="mb-1 {% if item.order == 0 %}text-light opacity-75{% else %}text-muted{% endif %}">
+                                                    {{ item.position }}
+                                                </h5>
+
+                                                <h4 class="mb-3 {% if item.order == 0 %}text-white{% else %}text-dark{% endif %}">
+                                                    {{ item.full_name }}
+                                                </h4>
+
+                                                <p class="mb-1 {% if item.order == 0 %}text-white{% else %}text-dark{% endif %}">
+                                                    <i class="fa fa-calendar me-2"></i>
+                                                    {{ item.reception_days }}
+                                                </p>
+
+                                                <p class="mb-1 {% if item.order == 0 %}text-white{% else %}text-dark{% endif %}">
+                                                    <i class="fa fa-phone me-2"></i>
+                                                    {{ item.phone_number }}
+                                                </p>
+
+                                                <p class="mb-3 {% if item.order == 0 %}text-white{% else %}text-dark{% endif %}">
+                                                    <i class="fa fa-envelope me-2"></i>
+                                                    {{ item.email }}
+                                                </p>
+
+                                                <button
+                                                    class="btn btn-secondary me-2"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#bio{{ item.id }}"
+                                                >
+                                                    {% t "management.biography" %}
+                                                </button>
+
+                                                <button
+                                                    class="btn btn-secondary"
+                                                    data-bs-toggle="collapse"
+                                                    data-bs-target="#duty{{ item.id }}"
+                                                >
+                                                    {% t "management.duties" %}
+                                                </button>
+
+                                            </div>
+
+                                        </div>
+
+                                        <div class="collapse mt-3" id="bio{{ item.id }}">
+                                            <div class="card">
+                                                <div class="card-header fw-bold">
+                                                    {% t "management.biography" %}
+                                                </div>
+                                                <div class="card-body">
+                                                    {{ item.biography|linebreaksbr }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="collapse mt-3" id="duty{{ item.id }}">
+                                            <div class="card">
+                                                <div class="card-header fw-bold">
+                                                    {% t "management.duties" %}
+                                                </div>
+                                                <div class="card-body">
+                                                    {{ item.duty|linebreaksbr }}
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    {% endfor %}
+					</div><!-- END COL-->		
+							
+				</div><!-- END ROW-->
+			</div><!-- END CONTAINER-->
+		</section>
+		<!-- END BLOG -->		
+
+{% endblock %}

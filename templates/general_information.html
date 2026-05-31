@@ -1,0 +1,203 @@
+{% extends "index.html" %}
+{% load static %}
+{% load translation_tags %}
+{% load date_tags %}
+{% block content %}
+
+<!-- START SECTION TOP -->
+		<section class="section-top" style="background-image: url('{% static "assets/img/bg/tashkent_city.jpg" %}');background-size:cover; background-position: center center;">
+			<div class="container">
+				<div class="row">
+				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+					<div class="section-top-title">
+						<h1>{% t "nav-sub-menu.general_information" %}</h1>		
+					</div>
+				  </div><!--- END COL -->				  
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+		<!-- END SECTION TOP -->		
+
+		<!-- START BLOG -->
+		<section class="blog-page section-padding">
+			<div class="container">	
+				<div class="row">
+                    <div class="col-lg-3 col-sm-12 col-xs-12 order-2 order-lg-1" style="background-color:#fbfcfe">
+						{% include "sub_menu_left_links.html" %}				
+					</div><!--- END COL -->			
+
+					<div class="col-lg-9 col-sm-12 col-xs-12 order-1 order-lg-2">
+                        
+
+                       <h3 class="mb-4">
+                            {{ general_information.title }}
+                        </h3>
+
+                        <div
+                            class="mb-5 p-4 p-lg-5 rounded shadow-sm position-relative"
+                            style="
+                                background:linear-gradient(to bottom,#fafcff,#f4f7fc);
+                                border:1px solid #e9edf5;
+                            "
+                        >
+
+                            <div
+                                class="position-absolute top-0 start-0"
+                                style="
+                                    width:80px;
+                                    height:4px;
+                                    background:#355db8;
+                                    border-radius:0 0 4px 0;
+                                "
+                            ></div>
+
+                            <div
+                                style="
+                                    line-height:2;
+                                    text-align:justify;
+                                    color:#606a78;
+                                    font-size:16px;
+                                "
+                            >
+                                {{ general_information.about_content|linebreaksbr }}
+                            </div>
+
+                        </div>
+                        <div class="timeline-wrapper">
+                            <div class="timeline-line"></div>
+                            {% for item in chronologies %}
+                            <div class="row align-items-center mb-5">
+                                {% if forloop.counter|divisibleby:2 %}
+                                <div class="col-md-5 order-md-3">
+                                    <div class="card timeline-card right shadow-sm border-0">
+                                        <div class="card-body p-4">
+                                            <h5 class="text-primary mb-3">
+                                                {{ item.year }}
+                                            </h5>
+                                            <div class="text-muted">
+                                                {{ item.description|linebreaksbr }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-md-2 order-md-2 text-center">
+                                    <div class="timeline-year">
+                                        {{ item.year }}
+                                    </div>
+                                </div>
+                                <div class="col-md-5 order-md-1"></div>
+                                {% else %}
+                                <div class="col-md-5">
+                                    <div class="card timeline-card left shadow-sm border-0">
+                                        <div class="card-body p-4">
+                                            <h5 class="text-primary mb-3">
+                                                {{ item.year }}
+                                            </h5>
+                                            <div class="text-muted">
+                                                {{ item.description|linebreaksbr }}
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-2 text-center">
+                                    <div class="timeline-year">
+                                        {{ item.year }}
+                                    </div>
+                                </div>
+                                <div class="col-md-5"></div>
+                                {% endif %}
+                            </div>
+                            {% endfor %}
+                        </div>
+
+                       
+					</div><!-- END COL-->		
+							
+				</div><!-- END ROW-->
+			</div><!-- END CONTAINER-->
+		</section>
+		<!-- END BLOG -->		
+
+
+
+
+
+        <style>
+.timeline-wrapper{
+    position:relative;
+}
+
+.timeline-line{
+    position:absolute;
+    left:50%;
+    top:0;
+    bottom:0;
+    width:4px;
+    background:#355db8;
+    transform:translateX(-50%);
+}
+
+.timeline-year{
+    width:80px;
+    height:80px;
+    border-radius:50%;
+    background:#355db8;
+    color:#fff;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    font-weight:700;
+    font-size:18px;
+    margin:auto;
+    border:5px solid #fff;
+    box-shadow:0 .5rem 1rem rgba(0,0,0,.15);
+    position:relative;
+    z-index:2;
+}
+
+.timeline-card{
+    position:relative;
+}
+
+.timeline-card.left::after{
+    content:"";
+    position:absolute;
+    top:50%;
+    right:-40px;
+    width:40px;
+    height:3px;
+    background:#355db8;
+    transform:translateY(-50%);
+}
+
+.timeline-card.right::before{
+    content:"";
+    position:absolute;
+    top:50%;
+    left:-40px;
+    width:40px;
+    height:3px;
+    background:#355db8;
+    transform:translateY(-50%);
+}
+
+@media(max-width:991px){
+
+    .timeline-line{
+        left:40px;
+    }
+
+    .timeline-year{
+        width:60px;
+        height:60px;
+        font-size:15px;
+    }
+
+    .timeline-card.left::after,
+    .timeline-card.right::before{
+        display:none;
+    }
+}
+</style>
+{% endblock %}

@@ -1,0 +1,62 @@
+{% load static %}
+{% load translation_tags %}
+{% load date_tags %}
+<ul class="list-unstyled  mb-0">
+	<li>
+		<a href="#" class="d-block px-3 py-3 text-decoration-none  text-uppercase  text-light bg-primary">
+			{% t "nav-menu.about" %}
+		</a>
+	</li>
+
+	<li  {% if active_menu == "general_information" %}style="background:#eef2fb;"{% endif %}>
+		<a href="{% url 'general_information' request.CURRENT_LANG %}"
+		   class="d-block px-3 py-3 text-decoration-none text-uppercase {% if active_menu == 'general_information' %}fw-bold{% else %}text-secondary{% endif %}"
+		   {% if active_menu == "general_information" %}style="color:#334b73;"{% endif %}
+		   >
+			<i class="fa fa-circle-o me-2 small"></i>
+			{% t "nav-sub-menu.general_information" %}
+		</a>
+	</li>
+
+	<li  {% if active_menu == "management" %}style="background:#eef2fb;"{% endif %}>
+		<a href="{% url 'management_team' request.CURRENT_LANG %}"
+		   class="d-block px-3 py-3 text-decoration-none text-uppercase {% if active_menu == 'management' %}fw-bold{% else %}text-secondary{% endif %}"
+		   {% if active_menu == "management" %}style="color:#334b73;"{% endif %}
+		   >
+			<i class="fa fa-circle-o me-2 small"></i>
+			{% t "nav-sub-menu.management" %}
+		</a>
+	</li>
+
+	<li  {% if active_menu == "organizational_structure" %}style="background:#eef2fb;"{% endif %}>
+		<a href="{% url 'organizational_structure' request.CURRENT_LANG %}"
+		   class="d-block px-3 py-3 text-decoration-none text-uppercase {% if active_menu == 'organizational_structure' %}fw-bold{% else %}text-secondary{% endif %}"
+		   {% if active_menu == "organizational_structure" %}style="color:#334b73;"{% endif %}
+		   >
+			<i class="fa fa-circle-o me-2 small"></i>
+			{% t "nav-sub-menu.organizational_structure" %}
+		</a>
+	</li>
+
+
+	<li  {% if active_menu == "supervisory_board" %}style="background:#eef2fb;"{% endif %}>
+		<a href="{% url 'supervisory_board' request.CURRENT_LANG %}"
+		   class="d-block px-3 py-3 text-decoration-none text-uppercase {% if active_menu == 'supervisory_board' %}fw-bold{% else %}text-secondary{% endif %}"
+		   {% if active_menu == "supervisory_board" %}style="color:#334b73;"{% endif %}
+		   >
+			<i class="fa fa-circle-o me-2 small"></i>
+			{% t "nav-sub-menu.supervisory_board" %}
+		</a>
+	</li>
+
+	<li  {% if active_menu == "vacancies" %}style="background:#eef2fb;"{% endif %}>
+		<a href="{% url 'vacancies' request.CURRENT_LANG %}"
+		   class="d-block px-3 py-3 text-decoration-none text-uppercase {% if active_menu == 'vacancies' %}fw-bold{% else %}text-secondary{% endif %}"
+		   {% if active_menu == "vacancies" %}style="color:#334b73;"{% endif %}
+		   >
+			<i class="fa fa-circle-o me-2 small"></i>
+			{% t "nav-sub-menu.vacancies" %}
+		</a>
+	</li>
+
+</ul>
