@@ -205,7 +205,7 @@
 
 	   {% block content %}
 
-		<!-- START HOME  data-stellar-background-ratio="0.3"-->
+		{% comment %} <!-- START HOME  data-stellar-background-ratio="0.3"-->
 		<section  id="home" class="home_bg" style="background-image:url('{{ statistics.home_page_bg_icon.url }}'); background-size:cover; background-position:center center;">
 			<div class="container">
 				<div class="row">
@@ -220,15 +220,52 @@
 				  </div><!--- END COL -->				  
 				</div><!--- END ROW -->
 			</div><!--- END CONTAINER -->
-		</section>
+		</section> {% endcomment %}
 		<!-- END  HOME -->
+
+
+		<!-- START HOME  data-stellar-background-ratio="0.3"-->
+		<section id="home" class="home_bg position-relative overflow-hidden">
+				<video
+					autoplay
+					muted
+					loop
+					playsinline
+					disablePictureInPicture
+    				controlsList="nodownload noremoteplayback nofullscreen"
+					class="position-absolute top-0 start-0 w-100 h-100"
+					style="object-fit:cover;z-index:0;"
+				>
+					<source src="{{ statistics.company_video.url }}" type="video/mp4">
+				</video>
+			<div
+					class="position-absolute top-0 start-0 w-100 h-100"
+					style="background:rgba(0,0,0,.45);z-index:1;"
+			></div>
+			<div class="container position-relative" style="z-index:2;">
+				<div class="row">
+				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+					<div class="hero-text">
+						<h2>{% t "home.hero_title" %}</h2>
+						<p class="text-white fw-semibold fs-4">
+							{% t "home.hero_description" %}
+						</p>
+						<a href="{% url 'general_information' request.CURRENT_LANG %}">{% t "home.learn_more" %}</a>
+					</div>
+				  </div><!--- END COL -->				  
+				</div><!--- END ROW -->
+			</div><!--- END CONTAINER -->
+		</section>
+
 
 		<!-- FEATURES -->
 		<section class="feature_area">
 			<div class="container">	
 				<div class="row feature_bg">
 					<div class="section-title text-center">		
-						<h2>{% t "home.our_advantages" %}</h2>
+						<h2 class="text-decoration-none" style="text-transform:none;">
+							{% t "home.our_advantages" %}
+						</h2>
 						<p>{% t "home.mission_description" %}</p>
 					</div>					
 					{% for item in advantages %}
@@ -338,7 +375,7 @@
 				<div class="row text-center">						
 					<div class="col-lg-8 offset-lg-2 col-sm-12 col-xs-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.3s" data-wow-offset="0">
 						<div 
-							class="video_btn d-flex align-items-center justify-content-center"
+							class="video_btn d-flex flex-column align-items-center justify-content-center"
 							style="
 								background-image:url('{{ statistics.company_video_bg_image.url }}');
 								background-size:cover;
@@ -354,9 +391,32 @@
 								style="cursor:pointer;"
 								onclick="document.getElementById('companyVideo').showModal()"
 							>
-								<i class="ti-video-clapper"></i>
+								<i class="fa fa-play-circle"></i>
 							</a>
-
+							<span
+								style="
+									display:inline-block;
+									color:#ffffff;
+									font-size:20px;
+									font-weight:800;
+									letter-spacing:2px;
+									text-transform:uppercase;
+									padding:10px 24px;
+									border-radius:999px;
+									background:rgba(0,0,0,.28);
+									backdrop-filter:blur(6px);
+									border:1px solid rgba(255,255,255,.15);
+									text-shadow:
+										0 2px 12px rgba(0,0,0,.95),
+										0 0 20px rgba(245,163,0,.8),
+										0 0 40px rgba(245,163,0,.4);
+									box-shadow:
+										0 8px 30px rgba(0,0,0,.35),
+										inset 0 1px 0 rgba(255,255,255,.15);
+								"
+							>
+								{% t "home.about_us_brief" %}
+							</span>
 						</div>
 
 
@@ -551,7 +611,9 @@
 		<div class="partner-logo section-padding">
 			<div class="container">
 				<div class="section-title text-center">
-					<h2>{% t "home.our_partners" %}</h2>
+					<h2 class="text-decoration-none" style="text-transform:none;">
+						{% t "home.our_partners" %}
+					</h2>
 				</div>
 				<div class="partner-slider owl-carousel">
 					{% for item in partners %}
@@ -575,10 +637,24 @@
 			</div>
 		</div>
 		<!-- END partners -->
-
-
+			<div class="footer-wave">
+				<svg viewBox="0 0 1440 260" preserveAspectRatio="none">
+					<path
+						fill="#46516f"
+						d="
+							M0,120
+							C250,260 500,260 720,140
+							C940,20 1180,20 1440,140
+							L1440,260
+							L0,260
+							Z
+						"
+					/>
+				</svg>
+			</div>
 		<!-- START FOOTER -->
-		<div class="footer" style="background-image: url('{% static "assets/img/bg/footer.png" %}'); background-size:cover;">
+		{% comment %} <div class="footer" style="background-image: url('{% static "assets/img/bg/footer.png" %}'); background-size:cover;"> {% endcomment %}
+			<div class="footer">
 			<div class="container">		
 				<div class="row footer_bg">						
 					<div class="col-lg-3 col-sm-6 col-xs-12">

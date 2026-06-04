@@ -352,11 +352,19 @@ video {min-width: 100%;height:100%; }
 * 04.START ABOUT DESIGN
 * ----------------------------------------------------------------------------------------
 */
+/* .feature_area { padding-bottom: 80px; position: relative; margin-top: -80px; }
+ */
+
+
+
 .feature_area {
 	padding-bottom: 80px;
 	position: relative;
-	margin-top: -80px;
+	margin-top: -140px;
+	z-index: 10;
 }
+
+
 @media only screen and (max-width:768px) { 
 .feature_area{
 	margin-top:0px;
@@ -1509,12 +1517,38 @@ margin-bottom: -10px;
 * 18.START FOOTER DESIGN
 * ----------------------------------------------------------------------------------------
 */
-.footer {
+/* .footer {
 	padding-bottom: 50px;
 	padding-top: 80px;
 	background-size: 100% 100%;
+} */
+
+.footer-wave{
+    line-height:0;
+    margin-bottom:-5px;
 }
-.footer_logo {padding-top:160px;}
+
+.footer-wave svg{
+    display:block;
+    width:100%;
+    height:clamp(60px, 15vw, 220px);
+}
+
+.footer{
+    background:#46516f;
+    margin-top:-5px;
+}
+
+
+/* ADD */
+.footer_logo,
+.single_footer,
+.newsletter-form {
+	padding-top:0;
+}
+
+
+/* .footer_logo {padding-top:160px;} */
 .footer_logo img{
 width:150px;
 }
@@ -1523,7 +1557,7 @@ width:150px;
 	margin-top: 10px;
 	margin-bottom: 25px;
 }
-.single_footer{padding-top:160px;}
+/* .single_footer{padding-top:160px;} */
 .single_footer h4 {
 	color: #fff;
 	margin-top: 0;
@@ -1577,7 +1611,7 @@ width:150px;
 }
 
 /*START SOCIAL PROFILE CSS*/
-.newsletter-form{padding-top:160px;}
+/* .newsletter-form{padding-top:160px;} */
 .newsletter-form h4{
 	color: #fff;
 	margin-top: 0;

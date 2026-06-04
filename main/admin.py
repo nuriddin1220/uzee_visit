@@ -23,6 +23,13 @@ from .models import ProjectImage,Project
 from .models import Activity
 
 
+
+admin.site.site_header = "UzEnergoEngineering"
+admin.site.site_title = "UzEnergoEngineering Admin"
+admin.site.index_title = "UzEnergoEngineering Administration"
+
+
+
 @admin.register(Translation)
 class TranslationAdmin(admin.ModelAdmin):
 
