@@ -527,9 +527,9 @@ class DividendFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
-    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
-    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
+    title_uz = models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru = models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en = models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="dividends/%Y/%m/%d/",
