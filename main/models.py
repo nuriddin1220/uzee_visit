@@ -277,9 +277,9 @@ class ShareholderMeetingFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
     
     
     file=models.FileField(
@@ -341,9 +341,9 @@ class DevelopmentStrategyFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="development_strategy/%Y/%m/%d/",
@@ -403,9 +403,9 @@ class InternalDocumentFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="internal_documents/%Y/%m/%d/",
@@ -466,9 +466,9 @@ class BusinessPlanFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="business_plan/%Y/%m/%d/",
@@ -527,9 +527,9 @@ class DividendFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="dividends/%Y/%m/%d/",
@@ -588,9 +588,9 @@ class ReportFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="reports/%Y/%m/%d/",
@@ -649,9 +649,9 @@ class CharterFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="charter/%Y/%m/%d/",
@@ -710,9 +710,9 @@ class EmissionProspectusFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="emission_prospectus/%Y/%m/%d/",
@@ -771,9 +771,9 @@ class AuditReportFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="audit_reports/%Y/%m/%d/",
@@ -832,9 +832,9 @@ class ImportantFactFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="important_facts/%Y/%m/%d/",
@@ -895,9 +895,9 @@ class ComplyExplainFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="comply_explain/%Y/%m/%d/",
@@ -957,9 +957,9 @@ class AffiliatedPersonFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="affiliated_persons/%Y/%m/%d/",
@@ -1179,9 +1179,9 @@ class OrganizationStructureFile(models.Model):
         related_name="files"
     )
 
-    title_uz=models.CharField(max_length=255,verbose_name="Fayl nomi (UZ)")
-    title_ru=models.CharField(max_length=255,verbose_name="Fayl nomi (RU)")
-    title_en=models.CharField(max_length=255,verbose_name="Fayl nomi (EN)")
+    title_uz=models.TextField(verbose_name="Fayl nomi (UZ)")
+    title_ru=models.TextField(verbose_name="Fayl nomi (RU)")
+    title_en=models.TextField(verbose_name="Fayl nomi (EN)")
 
     file=models.FileField(
         upload_to="organization_structure/%Y/%m/%d/",
