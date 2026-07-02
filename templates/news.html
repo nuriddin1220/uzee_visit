@@ -3,6 +3,35 @@
 {% load translation_tags %}
 {% load date_tags %}
 
+{% block title %}
+{% t "home.latest_news" %} | {% t "site.title" %}
+{% endblock %}
+
+{% block meta_description %}
+{% t "home.latest_news_description" %}
+{% endblock %}
+
+{% block meta_keywords %}
+{% t "site.meta_keywords" %}, {% t "home.latest_news" %}
+{% endblock %}
+
+{% block og_title %}
+{% t "home.latest_news" %} | {% t "site.title" %}
+{% endblock %}
+
+{% block og_description %}
+{% t "home.latest_news_description" %}
+{% endblock %}
+
+{% block twitter_title %}
+{% t "home.latest_news" %} | {% t "site.title" %}
+{% endblock %}
+
+{% block twitter_description %}
+{% t "home.latest_news_description" %}
+{% endblock %}
+
+
 {% block content %}
 
 
