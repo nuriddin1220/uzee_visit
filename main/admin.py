@@ -181,6 +181,7 @@ class StatisticsAdmin(admin.ModelAdmin):
             "fields":(
                 "company_video_bg_image",
                 "company_video",
+                "visit_video",
             )
         }),
             )

@@ -102,7 +102,8 @@ class Statistics(models.Model):
     company_video_bg_image=models.ImageField(upload_to="statistics/video_bg/")
     
     company_video=models.FileField(upload_to="statistics/videos/")
-
+    visit_video=models.FileField(upload_to="statistics/visit_videos/")
+    
     created_at=models.DateTimeField(auto_now_add=True)
 
     class Meta:

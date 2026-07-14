@@ -89,7 +89,8 @@ def home(request,lang=None):
         "home_page_bg_icon":s.home_page_bg_icon,
 
         "company_video_bg_image":s.company_video_bg_image,
-        "company_video":s.company_video
+        "company_video":s.company_video,
+        "visit_video":s.visit_video
     }
 
 
