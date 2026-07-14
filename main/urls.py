@@ -23,7 +23,19 @@ from .views import (home,
                     general_information,
                     projects,
                     project_detail,
-                    activity_list)
+                    activity_list,
+                    robots_txt)
+
+from django.contrib.sitemaps.views import sitemap
+from .sitemaps import StaticSitemap, NewsSitemap
+
+sitemaps = {
+    "static": StaticSitemap,
+    "news": NewsSitemap,
+}
+
+
+
 
 urlpatterns = [
     path("", root_redirect),
@@ -54,4 +66,9 @@ urlpatterns = [
     path("<str:lang>/projects/<int:id>/",project_detail,name="project_detail"),
     
     path("<str:lang>/activities/",activity_list,name="activity_list"),
+    
+    path("robots.txt", robots_txt),
+    path("robots.txt/", robots_txt),
+    path("sitemap.xml", sitemap, {"sitemaps": sitemaps}, name="sitemap"),
+    path("sitemap.xml/", sitemap, {"sitemaps": sitemaps}),
 ]

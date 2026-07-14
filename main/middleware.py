@@ -1,3 +1,4 @@
+from django.http import Http404
 from django.utils.deprecation import MiddlewareMixin
 
 
@@ -7,9 +8,22 @@ class LanguageMiddleware(MiddlewareMixin):
 
         parts = request.path.strip("/").split("/")
 
-        lang = parts[0] if parts else "uz"
+        if not parts or parts == [""]:
+            request.CURRENT_LANG = "uz"
+            return
 
-        if lang not in ["uz", "ru", "en"]:
-            lang = "uz"
+        # Til talab qilmaydigan URLlar
+        if parts[0] in (
+            "admin",
+            "robots.txt",
+            "sitemap.xml",
+            "static",
+            "media",
+        ):
+            request.CURRENT_LANG = "uz"
+            return
 
-        request.CURRENT_LANG = lang
+        if parts[0] not in ("uz", "ru", "en"):
+            raise Http404()
+
+        request.CURRENT_LANG = parts[0]

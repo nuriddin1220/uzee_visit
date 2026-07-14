@@ -733,3 +733,18 @@ def activity_list(request, lang):
             "activities": activities
         }
     )
+    
+
+from django.http import HttpResponse
+def robots_txt(request):
+    sitemap_url = request.build_absolute_uri("/sitemap.xml")
+
+    return HttpResponse(
+        "\n".join([
+            "User-Agent: *",
+            "Allow: /",
+            "",
+            f"Sitemap: {sitemap_url}",
+        ]),
+        content_type="text/plain",
+    )
