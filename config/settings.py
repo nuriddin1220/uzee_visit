@@ -26,6 +26,10 @@ SECRET_KEY = 'django-insecure-kjso2_%rq^i6$(jt*86zs%ska6g8c4c=ut*-6c@t66l^j*dk-e
 DEBUG = True
 
 ALLOWED_HOSTS = ['*']
+CSRF_TRUSTED_ORIGINS = [
+    'http://46.8.176.114:8080',
+    'https://saytim.com',
+]
 
 
 # Application definition
