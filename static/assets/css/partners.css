@@ -81,6 +81,7 @@
 
 .partners-track{
     display:flex;
+    flex-wrap:nowrap !important;
     gap:28px;
     width:max-content;
     animation:partnersScroll 80s linear infinite;
@@ -187,19 +188,22 @@
     to  { transform:translateX(calc(-50% - 8px)); }
 }
 
-/* ---------- Accessibility ---------- */
+/* ---------- Accessibility: reduced motion ---------- */
 @media (prefers-reduced-motion:reduce){
+    .partners-marquee{
+        overflow-x:auto;
+        -webkit-overflow-scrolling:touch;
+        scrollbar-width:none;
+    }
+    .partners-marquee::-webkit-scrollbar{
+        display:none;
+    }
     .partners-track{
         animation:none;
-        flex-wrap:wrap;
-        justify-content:center;
-        width:auto;
     }
-
     .partner-card[aria-hidden="true"]{
         display:none;
     }
-
     .partners-divider span{
         animation:none;
     }
