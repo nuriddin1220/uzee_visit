@@ -1867,3 +1867,18 @@ position: relative;
 * ----------------------------------------------------------------------------------------
 */
 
+
+
+
+
+/* top of page (dark/video background) — light */
+.site-title{
+    color:#ffffff;
+    text-shadow:0 2px 8px rgba(0,0,0,.6);
+}
+
+/* after scroll (white navbar) — navy */
+.is-sticky .site-title{
+    color:#183153;
+    text-shadow:none;
+}

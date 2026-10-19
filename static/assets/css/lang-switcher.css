@@ -1,0 +1,268 @@
+/* =========================================================
+   LANGUAGE SWITCHER
+   File: static/assets/css/lang-switcher.css
+   ========================================================= */
+
+.lang-switch{
+    position:relative;
+    display:inline-block;
+    vertical-align:middle;
+}
+
+/* ---------- Trigger (glass pill) ---------- */
+.lang-switch > summary{
+    list-style:none;
+}
+.lang-switch > summary::-webkit-details-marker{
+    display:none;
+}
+
+.lang-trigger{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    padding:4px 11px 4px 4px;
+    border-radius:999px;
+    background:rgba(255,255,255,.14);
+    border:1px solid rgba(255,255,255,.35);
+    backdrop-filter:blur(12px) saturate(1.4);
+    -webkit-backdrop-filter:blur(12px) saturate(1.4);
+    color:#fff;
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:1.2px;
+    cursor:pointer;
+    user-select:none;
+    box-shadow:0 4px 16px rgba(0,0,0,.18);
+    transition:background .3s ease, border-color .3s ease, color .3s ease, box-shadow .3s ease, transform .2s ease;
+}
+
+.lang-trigger:hover{
+    background:rgba(255,255,255,.24);
+    border-color:rgba(255,255,255,.6);
+    transform:translateY(-1px);
+}
+
+.lang-trigger:focus-visible{
+    outline:none;
+    box-shadow:0 0 0 3px rgba(245,163,0,.45);
+}
+
+/* trigger on the white sticky navbar */
+.is-sticky .lang-trigger{
+    background:#f4f7fc;
+    border-color:#e3e8f2;
+    color:#183153;
+    box-shadow:0 2px 8px rgba(24,49,83,.08);
+}
+.is-sticky .lang-trigger:hover{
+    background:#eef2fb;
+    border-color:#c9d5f0;
+}
+
+/* ---------- Trigger icon ---------- */
+.lang-trigger-icon{
+    width:24px;
+    height:24px;
+    flex-shrink:0;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:linear-gradient(135deg,#355db8 0%,#183153 100%);
+    color:#fff;
+    font-size:13px;
+    box-shadow:0 2px 6px rgba(0,0,0,.2);
+}
+
+.lang-caret{
+    font-size:13px;
+    opacity:.85;
+    transition:transform .3s cubic-bezier(.2,.8,.2,1);
+}
+
+.lang-switch[open] .lang-caret{
+    transform:rotate(180deg);
+}
+
+/* ---------- Dropdown card ---------- */
+.lang-menu{
+    position:absolute;
+    top:calc(100% + 14px);
+    right:0;
+    width:230px;
+    padding:8px;
+    background:#fff;
+    border:1px solid #e9edf5;
+    border-radius:18px;
+    box-shadow:
+        0 24px 48px rgba(24,49,83,.18),
+        0 4px 12px rgba(24,49,83,.08);
+    z-index:1050;
+    transform-origin:top right;
+}
+
+/* little arrow notch */
+.lang-menu::before{
+    content:"";
+    position:absolute;
+    top:-7px;
+    right:22px;
+    width:14px;
+    height:14px;
+    background:#fff;
+    border-top:1px solid #e9edf5;
+    border-left:1px solid #e9edf5;
+    transform:rotate(45deg);
+    border-radius:3px 0 0 0;
+}
+
+.lang-switch[open] .lang-menu{
+    animation:langMenuIn .28s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes langMenuIn{
+    from{ opacity:0; transform:translateY(-8px) scale(.96); }
+    to  { opacity:1; transform:translateY(0)    scale(1);   }
+}
+
+.lang-menu-label{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    padding:6px 10px 10px;
+    margin-bottom:4px;
+    border-bottom:1px solid #f0f3f9;
+    color:#8a94a6;
+    font-size:11px;
+    font-weight:600;
+    letter-spacing:.6px;
+    text-transform:uppercase;
+}
+
+.lang-menu-label i{
+    color:#355db8;
+}
+
+/* ---------- Items ---------- */
+/* strong selector + !important so theme's .site-menu a rules don't leak in */
+.site-menu .lang-switch .lang-item,
+.lang-switch .lang-item{
+    position:relative;
+    display:flex !important;
+    align-items:center;
+    gap:12px;
+    padding:9px 10px !important;
+    margin:2px 0;
+    border-radius:12px;
+    color:#183153 !important;
+    font-size:14px !important;
+    text-transform:none !important;
+    letter-spacing:normal !important;
+    text-decoration:none !important;
+    line-height:1.2;
+    transition:background .2s ease, transform .2s ease;
+}
+
+.lang-switch .lang-item:hover{
+    background:#f4f7fc;
+    transform:translateX(3px);
+}
+
+.lang-code{
+    width:34px;
+    height:34px;
+    flex-shrink:0;
+    border-radius:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#f4f7fc;
+    border:1px solid #e3e8f2;
+    color:#355db8;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:.8px;
+    transition:background .2s ease, color .2s ease, border-color .2s ease;
+}
+
+.lang-switch .lang-item:hover .lang-code{
+    border-color:#c9d5f0;
+}
+
+.lang-item-text{
+    display:flex;
+    flex-direction:column;
+    gap:2px;
+}
+
+.lang-item-name{
+    font-weight:600;
+    color:#183153;
+}
+
+.lang-item-sub{
+    font-size:11px;
+    color:#8a94a6;
+    font-weight:500;
+}
+
+.lang-item-check{
+    margin-left:auto;
+    width:20px;
+    height:20px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#355db8;
+    color:#fff;
+    font-size:10px;
+    opacity:0;
+    transform:scale(.5);
+    transition:opacity .2s ease, transform .2s ease;
+}
+
+/* active language */
+.lang-switch .lang-item.is-active{
+    background:linear-gradient(135deg,#eef2fb 0%,#f7f9fd 100%);
+}
+
+.lang-switch .lang-item.is-active::before{
+    content:"";
+    position:absolute;
+    left:0;
+    top:10px;
+    bottom:10px;
+    width:3px;
+    border-radius:3px;
+    background:linear-gradient(180deg,#355db8,#f5a300);
+}
+
+.lang-switch .lang-item.is-active .lang-item-name{
+    color:#355db8;
+}
+
+.lang-switch .lang-item.is-active .lang-code{
+    background:linear-gradient(135deg,#355db8 0%,#183153 100%);
+    border-color:transparent;
+    color:#fff;
+    box-shadow:0 4px 10px rgba(53,93,184,.35);
+}
+
+.lang-switch .lang-item.is-active .lang-item-check{
+    opacity:1;
+    transform:scale(1);
+}
+
+/* the mobile menu already has its own language pills */
+.site-mobile-menu .lang-switch{
+    display:none;
+}
+
+@media (prefers-reduced-motion:reduce){
+    .lang-switch[open] .lang-menu{ animation:none; }
+    .lang-trigger,
+    .lang-caret,
+    .lang-switch .lang-item{ transition:none; }
+}

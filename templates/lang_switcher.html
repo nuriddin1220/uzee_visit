@@ -1,0 +1,51 @@
+{% load translation_tags %}
+<details class="lang-switch">
+
+    <summary class="lang-trigger" aria-label="Language">
+        <span class="lang-trigger-icon"><i class="fa fa-globe"></i></span>
+        <span class="lang-trigger-code">{{ request.CURRENT_LANG|upper }}</span>
+        <i class="fa fa-angle-down lang-caret"></i>
+    </summary>
+
+    <div class="lang-menu" role="menu">
+
+        <div class="lang-menu-label">
+            <i class="fa fa-globe"></i>
+            Til · Язык · Language
+        </div>
+
+        <a href="/uz{{ request.path|slice:'3:' }}"
+           class="lang-item {% if request.CURRENT_LANG == 'uz' %}is-active{% endif %}"
+           hreflang="uz" role="menuitem">
+            <span class="lang-code">UZ</span>
+            <span class="lang-item-text">
+                <span class="lang-item-name">O‘zbekcha</span>
+                <span class="lang-item-sub">Uzbek</span>
+            </span>
+            <i class="fa fa-check lang-item-check"></i>
+        </a>
+
+        <a href="/ru{{ request.path|slice:'3:' }}"
+           class="lang-item {% if request.CURRENT_LANG == 'ru' %}is-active{% endif %}"
+           hreflang="ru" role="menuitem">
+            <span class="lang-code">RU</span>
+            <span class="lang-item-text">
+                <span class="lang-item-name">Русский</span>
+                <span class="lang-item-sub">Russian</span>
+            </span>
+            <i class="fa fa-check lang-item-check"></i>
+        </a>
+
+        <a href="/en{{ request.path|slice:'3:' }}"
+           class="lang-item {% if request.CURRENT_LANG == 'en' %}is-active{% endif %}"
+           hreflang="en" role="menuitem">
+            <span class="lang-code">EN</span>
+            <span class="lang-item-text">
+                <span class="lang-item-name">English</span>
+                <span class="lang-item-sub">English</span>
+            </span>
+            <i class="fa fa-check lang-item-check"></i>
+        </a>
+
+    </div>
+</details>

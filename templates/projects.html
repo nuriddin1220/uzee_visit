@@ -5,94 +5,86 @@
 
 {% block content %}
 
+<link rel="stylesheet" href="{% static 'assets/css/projects.css' %}">
+
 <!-- START SECTION TOP -->
-		<section class="section-top bg-light" style="background-image: url('{% static "assets/img/bg/wind_energy_top.jpg" %}');background-size:cover; background-position: center center;">
-			<div class="container">
-				<div class="row">
-				  <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
-					<div class="section-top-title">
-						<h1>{% t "nav-sub-menu.projects" %}</h1>		
-					</div>
-				  </div><!--- END COL -->				  
-				</div><!--- END ROW -->
-			</div><!--- END CONTAINER -->
-		</section>
-		<!-- END SECTION TOP -->
-		
-		<!-- START PORTFOLIO -->
-		<section id="portfolio" class="portfolio_area section-padding">
-		   <div class="container-fluid">
-				<div class="section-title text-center">
-					<h2 style="text-transform:none;">{% t "home.projects_section_title_projects_screen" %}</h2>
-                    <p>{% t "home.projects_screen_section_description" %}</p>
-				</div>					
-				<div class="portfolio-grid">
-                <div class="row">
-
-                    {% for item in projects %}
-
-                    <div class="col-lg-{% cycle '4' '4' '4' '6' '6' %} col-sm-6 col-xs-12 portfolio-item">
-
-                        <div class="single-gallery">
-
-                            <img
-                                src="{{ item.first_image }}"
-                                class="img-fluid"
-                                alt="{{ item.title }}"
-                                style="width:100%;height:450px;object-fit:cover;"
-                            >
-
-
-                          <h4 class="mb-2">
-                            <span
-                                class="badge bg-primary mb-2 d-inline-block"
-                                style="
-                                    font-size:12px;
-                                    letter-spacing:.5px;
-                                "
-                            >
-                                {{ item.period }}
-                            </span>
-                            <br>
-                            <a
-                                    href="{% url 'project_detail' request.CURRENT_LANG item.id %}"
-                                class="text-white fw-bold"
-                                style="
-                                    text-shadow:
-                                        2px 2px 6px #000,
-                                        0 0 15px #000;
-                                "
-                            >
-                                {{ item.title|truncatechars:180 }}
-                            </a>
-                        </h4>
-
-
-                        </div>
-
-                    </div>
-
-                    {% endfor %}
-
+<section class="section-top bg-light" style="background-image:url('{% static "assets/img/bg/wind_energy_top.jpg" %}');background-size:cover;background-position:center center;">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12 col-sm-12 col-xs-12 text-center">
+                <div class="section-top-title">
+                    <h1>{% t "nav-sub-menu.projects" %}</h1>
                 </div>
             </div>
+        </div>
+    </div>
+</section>
+<!-- END SECTION TOP -->
 
+<!-- START PROJECTS -->
+<section id="portfolio" class="projects-section">
+    <div class="container-fluid">
+
+        <div class="projects-head text-center">
+            <h2 class="projects-title">{% t "home.projects_section_title_projects_screen" %}</h2>
+            <p class="projects-subtitle">{% t "home.projects_screen_section_description" %}</p>
+            <div class="projects-divider"></div>
+        </div>
+
+        <div class="row projects-grid">
+            {% for item in projects %}
+            <div class="col-lg-{% cycle '4' '4' '4' '6' '6' %} col-md-6 col-12 wow fadeInUp" data-wow-duration="1s" data-wow-delay="0.{{ forloop.counter|divisibleby:2|yesno:'2,1' }}s">
+
+                <a href="{% url 'project_detail' request.CURRENT_LANG item.id %}" class="project-card">
+
+                    {% if item.first_image %}
+                    <img
+                        src="{{ item.first_image }}"
+                        alt="{{ item.title }}"
+                        class="project-card-img"
+                        loading="lazy"
+                    >
+                    {% else %}
+                    <div class="project-card-placeholder">
+                        <i class="fa fa-bolt"></i>
+                    </div>
+                    {% endif %}
+
+                    {% if item.period %}
+                    <span class="project-period">
+                        <i class="fa fa-calendar"></i>
+                        {{ item.period }}
+                    </span>
+                    {% endif %}
+
+                    <span class="project-arrow">
+                        <i class="fa fa-arrow-right"></i>
+                    </span>
+
+                    <div class="project-body">
+                        <h3 class="project-title">{{ item.title }}</h3>
+                        <span class="project-more">{% t "home.read_more" %}</span>
+                    </div>
+
+                </a>
+
+            </div>
+            {% empty %}
+            <div class="col-12">
+                <div class="projects-empty">
+                    <i class="fa fa-folder-open-o"></i>
+                    <h5>{% t "general.no_data" %}</h5>
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+
+        {# wrapper div: current pagination.html ends with an extra </div> which closes this wrapper #}
+        <div class="projects-pagination">
             {% include "pagination.html" %}
-		</section>
-		<!-- END PORTFOLIO -->		
 
+    </div>
+</section>
+<!-- END PROJECTS -->
 
-        <style>
-.single-gallery h4{
-    opacity:1 !important;
-    visibility:visible !important;
-    display:block !important;
-    bottom:20px !important;
-}
-
-.single-gallery:hover h4{
-    opacity:1 !important;
-    visibility:visible !important;
-}
-</style>
 {% endblock %}
